@@ -14,12 +14,12 @@ Sponsor::~Sponsor()
 {
 }
 
-void Sponsor::setSponsorName(string newName)
+void Sponsor::setName(string newName)
 {
     name_ = newName;
 }
 
-void Sponsor::setSponsorColor_interface()
+void Sponsor::setColor_interface()
 {
     bool isPass;
 
@@ -65,10 +65,10 @@ void Sponsor::setSponsorColor_interface()
     } while (isPass == false);
 }
 
-void Sponsor::setSponsorTargetRace_interface()
+void Sponsor::setTargetRace_interface()
 {
     bool isPass;
-    char decision;
+    int decision;
 
     cout << "1) Podium" << endl;
     cout << "2) TOP 5" << endl;
@@ -78,8 +78,9 @@ void Sponsor::setSponsorTargetRace_interface()
 
     do {
         isPass = false;
-        decision = _getch();
-        if (decision >= 49 && decision <= 52)
+        cin >> decision;
+        cin.get();
+        if (decision >= 1 && decision <= 4)
             isPass = true;
     } while (isPass == false);
 
@@ -99,10 +100,10 @@ void Sponsor::setSponsorTargetRace_interface()
     }
 }
 
-void Sponsor::setSponsorTargetSeason_interface()
+void Sponsor::setTargetSeason_interface()
 {
     bool isPass;
-    char decision;
+    int decision;
 
     cout << "1) One of the driver is champion" << endl;
     cout << "2) TOP 3" << endl;
@@ -113,8 +114,9 @@ void Sponsor::setSponsorTargetSeason_interface()
 
     do {
         isPass = false;
-        decision = _getch();
-        if (decision >= 49 && decision <= 53)
+        cin >> decision;
+        cin.get();
+        if (decision >= 1 && decision <= 4)
             isPass = true;
     } while (isPass == false);
 
@@ -137,12 +139,12 @@ void Sponsor::setSponsorTargetSeason_interface()
     }
 }
 
-void Sponsor::setSponsorPaymentPerRace(int newPaymentPerRace)
+void Sponsor::setPaymentPerRace(double newPaymentPerRace)
 {
     paymentPerRace_ = newPaymentPerRace;
 }
 
-void Sponsor::setSponsorTargetBonusRatio(int newTargetBonusRatio)
+void Sponsor::setTargetBonusRatio(double newTargetBonusRatio)
 {
     targetBonusRatio_ = newTargetBonusRatio;
 }

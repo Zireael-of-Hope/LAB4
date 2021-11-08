@@ -34,12 +34,12 @@ public:
 	Sponsor();
 	~Sponsor();
 
-	void setSponsorName(string newName);
-	void setSponsorColor_interface();
-	void setSponsorTargetRace_interface();
-	void setSponsorTargetSeason_interface();
-	void setSponsorPaymentPerRace(int newPaymentPerRace);
-	void setSponsorTargetBonusRatio(int newTargetBonusRatio);
+	void setName(string newName);
+	void setColor_interface();
+	void setTargetRace_interface();
+	void setTargetSeason_interface();
+	void setPaymentPerRace(double newPaymentPerRace);
+	void setTargetBonusRatio(double newTargetBonusRatio);
 	void getInfoSponsor();
 	double getPaymentPerRace();
 };

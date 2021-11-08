@@ -31,7 +31,7 @@ public:
 	void sub_changeVehicle_stickers(bool& isCycled, int carNumber, bool& isPass, char& decision, std::string& tempString);
 	void sub_changeVehicle_driver(bool& isPass, char& decision, int carNumber, bool& isCycled);
 	void changeSponsor();
-	void upgradeFacility();
+	void sub_changeSposnor(int whichSponsor, std::string& tempString, double& tempDouble);
 };
 
 int choosingTeam(MyF1Team* team[]);
@@ -40,6 +40,7 @@ int main()
 {
 	bool isPass;
 	int decision;
+
 	MyF1Team* team[3] = { nullptr, nullptr, nullptr };
 
 	do {
@@ -59,7 +60,7 @@ int choosingTeam(MyF1Team* team[])
 	int i;
 
 	for (i = 0; i < 3; i++) {
-		cout << i + 1 << ") ";
+		cout << "\n" << i + 1 << ") ";
 		if (team[i] != nullptr) {
 			SetColor(14, 0);
 			cout << "\nDrivers:" << endl;
@@ -162,7 +163,7 @@ void MyF1Team::interactSlot()
 			changeSponsor();
 			break;
 		case '4':
-			upgradeFacility();
+			facility.setFacilityBureausLevel_interface();
 			break;
 		case '5': 
 			isCycled = false;
@@ -170,7 +171,6 @@ void MyF1Team::interactSlot()
 		}
 	} while (isCycled == true);
 }
-
 void MyF1Team::getTeamInfo()
 {
 	system("cls");
@@ -345,8 +345,6 @@ void MyF1Team::changeVehicle()
 	char decision;
 	bool isPass, isCycled;
 	string tempString;
-	int tempInt;
-
 
 	do {
 		system("cls");
@@ -388,12 +386,13 @@ void MyF1Team::sub_changeVehicle(int carNumber, bool& isPass, char& decision, st
 		cout << "2) Change Vehicle driver" << endl;
 		cout << "3) Change Vehicle components" << endl;
 		cout << "4) Sticker Management" << endl;
-		cout << "5) Return\n" << endl;
+		cout << "5) Update Vehicle total component wear ratio due to facilities level" << endl;
+		cout << "6) Return\n" << endl;
 
 		do {
 			isPass = false;
 			decision = _getch();
-			if (decision >= 49 && decision <= 53)
+			if (decision >= 49 && decision <= 54)
 				isPass = true;
 		} while (isPass == false);
 
@@ -426,6 +425,10 @@ void MyF1Team::sub_changeVehicle(int carNumber, bool& isPass, char& decision, st
 			isCycled = true;
 			break;
 		case '5':
+			if (carNumber == 1) w11_1.setVehicleTotalComponentWearRatio(facility.returnAerodynamicsLevel(), facility.returnPowertrainLevel(), facility.returnChassisLevel(), facility.returnDurabilityLevel());
+			else w11_2.setVehicleTotalComponentWearRatio(facility.returnAerodynamicsLevel(), facility.returnPowertrainLevel(), facility.returnChassisLevel(), facility.returnDurabilityLevel());
+			break;
+		case '6':
 			isCycled = false;
 			break;
 		}
@@ -564,13 +567,69 @@ void MyF1Team::changeSponsor()
 	char decision;
 	bool isPass, isCycled;
 	string tempString;
-	int tempInt;
+	double tempDouble;
 
-	system("cls");
+	do {
+		system("cls");
+		isCycled = true;
 
-	cout << "1) Change Main Sponsor"
+		cout << "1) Change Main Sponsor" << endl;
+		cout << "2) Change Secondary Sponsor" << endl;
+		cout << "3) Return" << endl;
+
+		do {
+			isPass = false;
+			decision = _getch();
+			if (decision >= 49 && decision <= 51)
+				isPass = true;
+		} while (isPass == false);
+
+		switch (decision) {
+		case '1':
+			sub_changeSposnor(1, tempString, tempDouble);
+			isCycled = true;
+			break;
+		case '2':
+			sub_changeSposnor(2, tempString, tempDouble);
+			break;
+		case '3':
+			isCycled = false;
+			break;
+		}
+	} while (isCycled == true);
 }
-void MyF1Team::upgradeFacility()
+void MyF1Team::sub_changeSposnor(int whichSponsor, std::string& tempString, double& tempDouble)
 {
+		system("cls");
 
+		cout << "Enter name of the main sponsor: ";
+		getline(cin, tempString);
+		if (whichSponsor == 1) mainSponsor.setName(tempString);
+		else secondarySponsor.setName(tempString);
+
+		puts("");
+		if (whichSponsor == 1) mainSponsor.setColor_interface();
+		else secondarySponsor.setColor_interface();
+
+		puts("");
+		if (whichSponsor == 1) mainSponsor.setTargetRace_interface();
+		else secondarySponsor.setTargetRace_interface();
+
+		puts("\n");
+		if (whichSponsor == 1) mainSponsor.setTargetSeason_interface();
+		else secondarySponsor.setTargetSeason_interface();
+
+		puts("\n");
+		cout << "Enter sponsor's payment per race: ";
+		cin >> tempDouble;
+		cin.get();
+		if (whichSponsor == 1) mainSponsor.setPaymentPerRace(tempDouble);
+		else secondarySponsor.setPaymentPerRace(tempDouble);
+
+		cout << "\nEnter sponsor's target bonus ratio: ";
+		cin >> tempDouble;
+		cin.get();
+		if (whichSponsor == 1) mainSponsor.setTargetBonusRatio(tempDouble);
+		else secondarySponsor.setTargetBonusRatio(tempDouble);
 }
+
