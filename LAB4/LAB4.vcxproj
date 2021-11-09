@@ -144,6 +144,7 @@
     <ClCompile Include="Facility.cpp" />
     <ClCompile Include="LAB4.cpp" />
     <ClCompile Include="Sponsor.cpp" />
+    <ClCompile Include="Team.cpp" />
     <ClCompile Include="Vehicle.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +152,7 @@
     <ClInclude Include="Driver.h" />
     <ClInclude Include="Facility.h" />
     <ClInclude Include="Sponsor.h" />
+    <ClInclude Include="Team.h" />
     <ClInclude Include="Vehicle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

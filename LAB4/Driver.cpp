@@ -65,7 +65,6 @@ void Driver::setDriverSalary_interface(double sponsorSalary)
 		if (decision >= 0 && decision <= 100)
 			isPass = true;
 	} while (isPass == false);
-	cin.get();
 
 	salary_ = sponsorSalary * (decision / 100);
 }
@@ -82,6 +81,7 @@ void Driver::getInfoDriver()
 	cout << "    " << "Racecraft: " << racecraft_ << endl;
 	cout << "    " << "Awareness: " << awareness_ << endl;
 	cout << "    " << "Pace: " << pace_ << endl;
+	cout << "    " << "Salary: " << salary_ << "%" << endl;
 }
 
 bool Driver::isDriverHired()
