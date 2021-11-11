@@ -139,7 +139,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bureau.cpp" />
     <ClCompile Include="Color.cpp" />
+    <ClCompile Include="Component.cpp" />
     <ClCompile Include="Driver.cpp" />
     <ClCompile Include="Facility.cpp" />
     <ClCompile Include="LAB4.cpp" />
@@ -148,7 +150,9 @@
     <ClCompile Include="Vehicle.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bureau.h" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="Component.h" />
     <ClInclude Include="Driver.h" />
     <ClInclude Include="Facility.h" />
     <ClInclude Include="Sponsor.h" />

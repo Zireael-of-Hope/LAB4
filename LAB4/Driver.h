@@ -1,13 +1,15 @@
 #pragma once
 #include <iostream>
 #include <string>
+
 #include "Color.h"
+
 using namespace std;
 
 class Driver
 {
 private:
-	string name_ = "NoName";
+	string name = "NoName";
 	int number_ = 0;
 
 	int overallRating_ = 0;
@@ -22,15 +24,15 @@ public:
 	Driver();
 	~Driver();
 
-	void setDriverName(string newName);
-	void setDriverNumber(int newNumber);
-	void setDriverOverallRating(int newOverallRating);
-	void setDriverExperience(int newExperience);
-	void setDriverRacecraft(int newRacecraft);
-	void setDriverAwareness(int newAwareness);
-	void setDriverPace(int newPace);
-	void setDriverSalary_interface(double sponsorSalary);
-	void getInfoDriver();
+	void SetName(string newName);
+	void SetNumber(int newNumber);
+	void SetOverallRating(int newOverallRating);
+	void SetExperience(int newExperience);
+	void SetRacecraft(int newRacecraft);
+	void SetAwareness(int newAwareness);
+	void SetPace(int newPace);
+	void SetSalary(double newSalary);
+	void GetInfo();
 
 	bool isDriverHired();
 	string returnDriverName();

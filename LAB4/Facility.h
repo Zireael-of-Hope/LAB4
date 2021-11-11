@@ -1,40 +1,33 @@
 #pragma once
 #include <iostream>
 #include <conio.h>
+
 #include "Color.h"
+#include "Bureau.h"
+
 using namespace std;
 
-struct Bureau
-{
-	int level;
-	float fabrication;
-	float buildTime;
-	float qualityControl;
-	float resourcePointGeneration;
-};
-
-class Facility
-{
+class Facility {
 private:
-	Bureau aerodynamics_;
-	Bureau powertrain_;
-	Bureau chassis_;
-	Bureau durability_;
+	Bureau aerodynamics;
+	Bureau powertrain;
+	Bureau chassis;
+	Bureau durability;
 
 public:
 	Facility();
 	~Facility();
 
-	void getInfoBureauAerodynamics();
-	void getInfoBureauPowertrain();
-	void getInfoBureauChassis();
-	void getInfoBureauDurability();
-	void setFacilityBureausLevel_interface();
+	void GetInfoBureauAerodynamics();
+	void GetInfoBureauPowertrain();
+	void GetInfoBureauChassis();
+	void GetInfoBureauDurability();
+	void SetFacilityBureausLevel_interface();
 
-	int returnAerodynamicsLevel();
-	int returnPowertrainLevel();
-	int returnChassisLevel();
-	int returnDurabilityLevel();
+	int ReturnAerodynamicsLevel();
+	int ReturnPowertrainLevel();
+	int ReturnChassisLevel();
+	int ReturnDurabilityLevel();
 };
 
 

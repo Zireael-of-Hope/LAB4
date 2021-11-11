@@ -34,14 +34,14 @@ int choosingTeam(MyF1Team* team[])
 			SetColor(14, 0);
 			cout << "\nDrivers:" << endl;
 			SetColor(15, 0);
-			team[i]->firstDriver.getInfoDriver();
-			team[i]->secondDriver.getInfoDriver();
+			team[i]->firstDriver.GetInfo();
+			team[i]->secondDriver.GetInfo();
 
 			SetColor(14, 0);
 			cout << "\nVehicles:" << endl;
 			SetColor(15, 0);
-			cout << "1) "; team[i]->w11_1.getInfoVehicleName();
-			cout << "2) "; team[i]->w11_2.getInfoVehicleName();
+			cout << "1) "; team[i]->w11_1.GetInfoName();
+			cout << "2) "; team[i]->w11_2.GetInfoName();
 		}
 		else {
 			cout << "Empty Slot\n" << endl;

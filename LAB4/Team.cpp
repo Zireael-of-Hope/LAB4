@@ -35,7 +35,7 @@ void MyF1Team::interactSlot()
 			changeSponsor();
 			break;
 		case '4':
-			facility.setFacilityBureausLevel_interface();
+			facility.SetFacilityBureausLevel_interface();
 			break;
 		case '5':
 			isCycled = false;
@@ -53,7 +53,7 @@ void MyF1Team::getTeamInfo()
 
 	if (firstDriver.isDriverHired()) {
 		cout << "1) ";
-		firstDriver.getInfoDriver();
+		firstDriver.GetInfo();
 	}
 	else {
 		SetColor(14, 0);
@@ -64,7 +64,7 @@ void MyF1Team::getTeamInfo()
 
 	if (secondDriver.isDriverHired()) {
 		cout << "\n2) ";
-		secondDriver.getInfoDriver();
+		secondDriver.GetInfo();
 	}
 	else {
 		SetColor(14, 0);
@@ -76,30 +76,30 @@ void MyF1Team::getTeamInfo()
 	SetColor(14, 0);
 	cout << "\nVehicle 1: " << endl;
 	SetColor(15, 0);
-	w11_1.getInfoVehicle();
+	w11_1.GetInfo();
 
 	SetColor(14, 0);
 	cout << "\nVehicle 2: " << endl;
 	SetColor(15, 0);
-	w11_2.getInfoVehicle();
+	w11_2.GetInfo();
 
 	SetColor(14, 0);
 	cout << "\nMain Sponsor: " << endl;
 	SetColor(15, 0);
-	mainSponsor.getInfoSponsor();
+	mainSponsor.GetInfoSponsor();
 
 	SetColor(14, 0);
 	cout << "\nSecondary Sponsor: " << endl;
 	SetColor(15, 0);
-	secondarySponsor.getInfoSponsor();
+	secondarySponsor.GetInfoSponsor();
 
 	SetColor(14, 0);
 	cout << "\nFacilities:" << endl;
 	SetColor(15, 0);
-	facility.getInfoBureauAerodynamics();
-	facility.getInfoBureauPowertrain();
-	facility.getInfoBureauChassis();
-	facility.getInfoBureauDurability();
+	facility.GetInfoBureauAerodynamics();
+	facility.GetInfoBureauPowertrain();
+	facility.GetInfoBureauChassis();
+	facility.GetInfoBureauDurability();
 }
 
 void MyF1Team::changeDriver()
@@ -142,59 +142,50 @@ void MyF1Team::sub_changeDriver(int whichDriver, std::string& tempString, int& t
 
 	cout << "Enter Driver's Name: ";
 	getline(cin, tempString);
-	if (whichDriver == 1) firstDriver.setDriverName(tempString);
-	else secondDriver.setDriverName(tempString);
+	if (whichDriver == 1) firstDriver.SetName(tempString);
+	else secondDriver.SetName(tempString);
 
 	cout << "Enter Driver's Number: ";
 	cin >> tempInt;
 	cin.get();
-	if (whichDriver == 1) firstDriver.setDriverNumber(tempInt);
-	else secondDriver.setDriverNumber(tempInt);
+	if (whichDriver == 1) firstDriver.SetNumber(tempInt);
+	else secondDriver.SetNumber(tempInt);
 
 	cout << "Enter Driver's Overall Rating: ";
 	cin >> tempInt;
 	cin.get();
-	if (whichDriver == 1) firstDriver.setDriverOverallRating(tempInt);
-	else secondDriver.setDriverOverallRating(tempInt);
+	if (whichDriver == 1) firstDriver.SetOverallRating(tempInt);
+	else secondDriver.SetOverallRating(tempInt);
 
 	cout << "Enter Driver's Experience: ";
 	cin >> tempInt;
 	cin.get();
-	if (whichDriver == 1) firstDriver.setDriverExperience(tempInt);
-	else secondDriver.setDriverExperience(tempInt);
+	if (whichDriver == 1) firstDriver.SetExperience(tempInt);
+	else secondDriver.SetExperience(tempInt);
 
 	cout << "Enter Driver's Racecraft: ";
 	cin >> tempInt;
 	cin.get();
-	if (whichDriver == 1) firstDriver.setDriverRacecraft(tempInt);
-	else secondDriver.setDriverRacecraft(tempInt);
+	if (whichDriver == 1) firstDriver.SetRacecraft(tempInt);
+	else secondDriver.SetRacecraft(tempInt);
 
 	cout << "Enter Driver's Awareness: ";
 	cin >> tempInt;
 	cin.get();
-	if (whichDriver == 1) firstDriver.setDriverAwareness(tempInt);
-	else secondDriver.setDriverAwareness(tempInt);
+	if (whichDriver == 1) firstDriver.SetAwareness(tempInt);
+	else secondDriver.SetAwareness(tempInt);
 
 	cout << "Enter Driver's Pace: ";
 	cin >> tempInt;
 	cin.get();
-	if (whichDriver == 1) firstDriver.setDriverPace(tempInt);
-	else secondDriver.setDriverPace(tempInt);
+	if (whichDriver == 1) firstDriver.SetPace(tempInt);
+	else secondDriver.SetPace(tempInt);
 
-	if (whichDriver == 1) {
-		if (mainSponsor.getPaymentPerRace() == 0) {
-			cout << "Driver's salary can't be set because of main sponsor's payment isn't defined yet" << endl;
-			Sleep(1500);
-		}
-		else firstDriver.setDriverSalary_interface(mainSponsor.getPaymentPerRace());
-	}
-	else {
-		if (secondarySponsor.getPaymentPerRace() == 0) {
-			cout << "Driver's salary can't be set because of main sponsor's payment isn't defined yet" << endl;
-			Sleep(1500);
-		}
-		else secondDriver.setDriverSalary_interface(secondarySponsor.getPaymentPerRace());
-	}
+	cout << "Enter Driver's salary: ";
+	cin >> tempInt;
+	cin.get();
+	if (whichDriver == 1) firstDriver.SetSalary(tempInt);
+	else secondDriver.SetSalary(tempInt);
 
 	SetColor(14, 0);
 	cout << "\nInfo has been updated";
@@ -264,8 +255,8 @@ void MyF1Team::sub_changeVehicle(int carNumber, bool& isPass, char& decision, st
 
 			cout << "Enter new Vehicle Name: ";
 			getline(cin, tempString);
-			if (carNumber == 1) w11_1.setVehicleName(tempString);
-			else w11_2.setVehicleName(tempString);
+			if (carNumber == 1) w11_1.SetName(tempString);
+			else w11_2.SetName(tempString);
 
 			SetColor(14, 0);
 			cout << "Name has been changed";
@@ -278,8 +269,8 @@ void MyF1Team::sub_changeVehicle(int carNumber, bool& isPass, char& decision, st
 			isCycled = true;
 			break;
 		case '3':
-			if (carNumber == 1) w11_1.setVehicleComponents_interface();
-			else w11_2.setVehicleComponents_interface();
+			if (carNumber == 1) w11_1.SetComponents_interface();
+			else w11_2.SetComponents_interface();
 			isCycled = true;
 			break;
 		case '4':
@@ -287,8 +278,8 @@ void MyF1Team::sub_changeVehicle(int carNumber, bool& isPass, char& decision, st
 			isCycled = true;
 			break;
 		case '5':
-			if (carNumber == 1) w11_1.setVehicleTotalComponentWearRatio(facility.returnAerodynamicsLevel(), facility.returnPowertrainLevel(), facility.returnChassisLevel(), facility.returnDurabilityLevel());
-			else w11_2.setVehicleTotalComponentWearRatio(facility.returnAerodynamicsLevel(), facility.returnPowertrainLevel(), facility.returnChassisLevel(), facility.returnDurabilityLevel());
+			if (carNumber == 1) w11_1.SetTotalComponentWearRatio(facility.ReturnAerodynamicsLevel(), facility.ReturnPowertrainLevel(), facility.ReturnChassisLevel(), facility.ReturnDurabilityLevel());
+			else w11_2.SetTotalComponentWearRatio(facility.ReturnAerodynamicsLevel(), facility.ReturnPowertrainLevel(), facility.ReturnChassisLevel(), facility.ReturnDurabilityLevel());
 			break;
 		case '6':
 			isCycled = false;
@@ -305,8 +296,8 @@ void MyF1Team::sub_changeVehicle_stickers(bool& isCycled, int carNumber, bool& i
 		cout << "Stickers on the Vehicle:" << endl;
 		SetColor(15, 0);
 		if (carNumber == 1)
-			w11_1.getSponsorStickers();
-		else w11_2.getSponsorStickers();
+			w11_1.GetSponsorStickers();
+		else w11_2.GetSponsorStickers();
 
 		cout << "\n1) Add Sticker on the Vehicle" << endl;
 		cout << "2) Delete Sticker on the Vehicle" << endl;
@@ -326,8 +317,8 @@ void MyF1Team::sub_changeVehicle_stickers(bool& isCycled, int carNumber, bool& i
 			cout << "Enter name of the new sticker: ";
 			getline(cin, tempString);
 			if (carNumber == 1)
-				w11_1.addSponsorSticker(tempString);
-			else w11_2.addSponsorSticker(tempString);
+				w11_1.AddSponsorSticker(tempString);
+			else w11_2.AddSponsorSticker(tempString);
 
 			SetColor(14, 0);
 			cout << "\nSticker has been added";
@@ -344,7 +335,7 @@ void MyF1Team::sub_changeVehicle_stickers(bool& isCycled, int carNumber, bool& i
 			SetColor(14, 0);
 			if (carNumber == 1)
 			{
-				if (w11_1.deleteSponsorSticker(tempString) == true) {
+				if (w11_1.DeleteSponsorSticker(tempString) == true) {
 					cout << "\nSticker has been deleted";
 					SetColor(15, 0);
 				}
@@ -355,7 +346,7 @@ void MyF1Team::sub_changeVehicle_stickers(bool& isCycled, int carNumber, bool& i
 			}
 			else
 			{
-				if (w11_2.deleteSponsorSticker(tempString) == true) {
+				if (w11_2.DeleteSponsorSticker(tempString) == true) {
 					cout << "\nSticker has been deleted";
 					SetColor(15, 0);
 				}
@@ -379,9 +370,9 @@ void MyF1Team::sub_changeVehicle_driver(bool& isPass, char& decision, int carNum
 		system("cls");
 
 		cout << "Which Driver you want to assign on this Vehicle:" << endl;
-		firstDriver.getInfoDriver();
+		firstDriver.GetInfo();
 		puts("");
-		secondDriver.getInfoDriver();
+		secondDriver.GetInfo();
 
 		cout << "1) Assign First Driver" << endl;
 		cout << "2) Assign Second Driver" << endl;
@@ -398,8 +389,8 @@ void MyF1Team::sub_changeVehicle_driver(bool& isPass, char& decision, int carNum
 		case '1':
 			if (firstDriver.isDriverHired() == true) {
 				if (carNumber == 1)
-					w11_1.setVehicleDriver(firstDriver.returnDriverName());
-				else w11_2.setVehicleDriver(firstDriver.returnDriverName());
+					w11_1.SetDriver(firstDriver);
+				else w11_2.SetDriver(firstDriver);
 			}
 			else {
 				cout << "Driver isn't hired yet";
@@ -409,8 +400,8 @@ void MyF1Team::sub_changeVehicle_driver(bool& isPass, char& decision, int carNum
 		case '2':
 			if (secondDriver.isDriverHired() == true) {
 				if (carNumber == 1)
-					w11_1.setVehicleDriver(secondDriver.returnDriverName());
-				else w11_2.setVehicleDriver(secondDriver.returnDriverName());
+					w11_1.SetDriver(secondDriver);
+				else w11_2.SetDriver(secondDriver);
 			}
 			else {
 				cout << "Driver isn't hired yet";
@@ -466,31 +457,31 @@ void MyF1Team::sub_changeSposnor(int whichSponsor, std::string& tempString, doub
 
 	cout << "Enter name of the main sponsor: ";
 	getline(cin, tempString);
-	if (whichSponsor == 1) mainSponsor.setName(tempString);
-	else secondarySponsor.setName(tempString);
+	if (whichSponsor == 1) mainSponsor.SetName(tempString);
+	else secondarySponsor.SetName(tempString);
 
 	puts("");
-	if (whichSponsor == 1) mainSponsor.setColor_interface();
-	else secondarySponsor.setColor_interface();
+	if (whichSponsor == 1) mainSponsor.SetColor_interface();
+	else secondarySponsor.SetColor_interface();
 
 	puts("");
-	if (whichSponsor == 1) mainSponsor.setTargetRace_interface();
-	else secondarySponsor.setTargetRace_interface();
+	if (whichSponsor == 1) mainSponsor.SetTargetRace_interface();
+	else secondarySponsor.SetTargetRace_interface();
 
 	puts("\n");
-	if (whichSponsor == 1) mainSponsor.setTargetSeason_interface();
-	else secondarySponsor.setTargetSeason_interface();
+	if (whichSponsor == 1) mainSponsor.SetTargetSeason_interface();
+	else secondarySponsor.SetTargetSeason_interface();
 
 	puts("\n");
 	cout << "Enter sponsor's payment per race: ";
 	cin >> tempDouble;
 	cin.get();
-	if (whichSponsor == 1) mainSponsor.setPaymentPerRace(tempDouble);
-	else secondarySponsor.setPaymentPerRace(tempDouble);
+	if (whichSponsor == 1) mainSponsor.SetPaymentPerRace(tempDouble);
+	else secondarySponsor.SetPaymentPerRace(tempDouble);
 
 	cout << "\nEnter sponsor's target bonus ratio: ";
 	cin >> tempDouble;
 	cin.get();
-	if (whichSponsor == 1) mainSponsor.setTargetBonusRatio(tempDouble);
-	else secondarySponsor.setTargetBonusRatio(tempDouble);
+	if (whichSponsor == 1) mainSponsor.SetTargetBonusRatio(tempDouble);
+	else secondarySponsor.SetTargetBonusRatio(tempDouble);
 }

@@ -2,7 +2,10 @@
 #include <iostream>
 #include <string>
 #include <conio.h>
+
+#include "Component.h"
 #include "Color.h"
+#include "Driver.h"
 
 using namespace std;
 
@@ -20,13 +23,10 @@ enum class TyresCompound {
 	HARD
 };
 
-struct Component {
-	int expectedLifespan;
-	int trackTime;
-	int wear;
-};
 
-struct Tyres {
+
+class Tyres {
+public:
 	TyresCompound installedTyres;
 	int tyreWear;
 };
@@ -34,89 +34,87 @@ struct Tyres {
 class Vehicle
 {
 private:
-	int sponsorStickerQuantity_;
+	int sponsorStickerQuantity;
 
-	string driverName_;
+	Driver driver;
 
-	string vehicleName_;
+	string vehicleName;
 
-	string* sponsorStickers_;
+	string* sponsorStickers;
 
-	Tyres tyreSet_;
+	Tyres tyreSet;
 
 	struct SeasonComponents {
-		double totalComponentWearRatio_;
-		struct powerUnitSet_ {
-			Component engine_1_;
-			Component engine_2_;
-			Component engine_3_;
+		double totalComponentWearRatio;
+		struct powerUnitSet {
+			Component engine1;
+			Component engine2;
+			Component engine3;
 
-			Component mguKinetic_1_;
-			Component mguKinetic_2_;
-			Component mguKinetic_3_;
+			Component mguKinetic1;
+			Component mguKinetic2;
+			Component mguKinetic3;
 
-			Component mguHeat_1_;
-			Component mguHeat_2_;
-			Component mguHeat_3_;
+			Component mguHeat1;
+			Component mguHeat2;
+			Component mguHeat3;
 
-			Component turboCharger_1_;
-			Component turboCharger_2_;
-			Component turboCharger_3_;
+			Component turboCharger1;
+			Component turboCharger2;
+			Component turboCharger3;
 
-			Component energyStore_1_;
-			Component energyStore_2_;
+			Component energyStore1;
+			Component energyStore2;
 
-			Component controlElectronics_1_;
-			Component controlElectronics_2_;
+			Component controlElectronics1;
+			Component controlElectronics2;
 
 			struct ChosenComponentsPowerUnit {
-				InstalledComponent internalCombastionEngine_;
-				InstalledComponent mguKinetic_;
-				InstalledComponent mguHeat_;
-				InstalledComponent energyStore_;
-				InstalledComponent turboCharger_;
-				InstalledComponent controlElectronics_;
-			} chosenComponentsPowerUnit_;
-		} powerUnitSet_;
+				InstalledComponent internalCombastionEngine;
+				InstalledComponent mguKinetic;
+				InstalledComponent mguHeat;
+				InstalledComponent energyStore;
+				InstalledComponent turboCharger;
+				InstalledComponent controlElectronics;
+			} chosenComponentsPowerUnit;
+		} powerUnitSet;
 		struct Gearbox {
-			Component practiceGearbox_1_;
-			Component practiceGearbox_2_;
+			Component practiceGearbox1;
+			Component practiceGearbox2;
 
-			Component eventGearbox_1_;
-			Component eventGearbox_2_;
+			Component eventGearbox1;
+			Component eventGearbox2;
 
 			struct ChosenComponentsGearbox {
-				InstalledComponent practiceGearbox_;
-				InstalledComponent eventGearbox_;
-			} chosenComponentsGearbox_;
-		} gearboxSet_;
-	} seasonComponents_;
+				InstalledComponent practiceGearbox;
+				InstalledComponent eventGearbox;
+			} chosenComponentsGearbox;
+		} gearboxSet;
+	} seasonComponents;
 
 public:
 	Vehicle();
 	~Vehicle();
 
-	void getSponsorStickers();
-	void addSponsorSticker(string newSponsorName);
-	bool deleteSponsorSticker(string nameDelete);
-	void getInfoVehicleSponsorSticker();
-	void getInfoVehicleTotalWear();
-	void getInfoVehicle();
-	void getInfoVehicleDriver();
-	void getInfoVehicleName();
-	void getInfoVehicleTyreSet();
-	void getInfoVehicleCombastionEngine();
-	void geInfoVehicleMguKinetic();
-	void getInfoVehicleMguHeat();
-	void getInfoVehicleTurboCharger();
-	void getInfoVehicleEnergyStore();
-	void getInfoVehicleControlElectronics();
-	void getInfoPractiseGerboxVehicle();
-	void getInfoEventGerboxVehicle();
-	void setVehicleName(string newName);
-	void setVehicleDriver(string newName);
-	void setVehicleTyres_interface();
-	void setVehicleComponents_interface();
-	void setVehicleTotalComponentWearRatio(int aerodynamicsLevel, int powertrainLevel, int chassisLevel, int durabilityLevel);
+	void GetSponsorStickers();
+	void AddSponsorSticker(string newSponsorName);
+	bool DeleteSponsorSticker(string nameDelete);
+	void GetInfoTotalWear();
+	void GetInfo();
+	void GetInfoName();
+	void GetInfoTyreSet();
+	void GetInfoCombastionEngine();
+	void GetInfoVehicleMguKinetic();
+	void GetInfoMguHeat();
+	void GetInfoTurboCharger();
+	void GetInfoEnergyStore();
+	void GetInfoControlElectronics();
+	void GetInfoPractiseGerbox();
+	void GetInfoEventGerbox();
+	void SetName(string newName);
+	void SetTyres_interface();
+	void SetComponents_interface();
+	void SetDriver(Driver newDriver);
+	void SetTotalComponentWearRatio(int aerodynamicsLevel, int powertrainLevel, int chassisLevel, int durabilityLevel);
 };
 

@@ -2,7 +2,9 @@
 #include <iostream>
 #include <string>
 #include <conio.h>
+
 #include "Color.h"
+
 using namespace std;
 
 enum class SponsorTargetRace {
@@ -23,25 +25,25 @@ enum class SponsorTargetSeason {
 class Sponsor
 {
 private:
-	string name_;
-	int color_;
-	SponsorTargetRace targetRace_;
-	SponsorTargetSeason targetSeason_;
-	double paymentPerRace_;
-	double targetBonusRatio_;
+	string name;
+	int color;
+	SponsorTargetRace targetRace;
+	SponsorTargetSeason targetSeason;
+	double paymentPerRace;
+	double targetBonusRatio;
 
 public:
 	Sponsor();
 	~Sponsor();
 
-	void setName(string newName);
-	void setColor_interface();
-	void setTargetRace_interface();
-	void setTargetSeason_interface();
-	void setPaymentPerRace(double newPaymentPerRace);
-	void setTargetBonusRatio(double newTargetBonusRatio);
-	void getInfoSponsor();
-	double getPaymentPerRace();
+	void SetName(string newName);
+	void SetColor_interface();
+	void SetTargetRace_interface();
+	void SetTargetSeason_interface();
+	void SetPaymentPerRace(double newPaymentPerRace);
+	void SetTargetBonusRatio(double newTargetBonusRatio);
+	void GetInfoSponsor();
+	double GetPaymentPerRace();
 };
 
 

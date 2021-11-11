@@ -2,24 +2,24 @@
 
 Sponsor::Sponsor()
 {
-    name_ = "NoName";
-    color_ = 15;
-    targetRace_ = SponsorTargetRace::FINISH;
-    targetSeason_ = SponsorTargetSeason::NOT_LAST;
-    paymentPerRace_ = 0;
-    targetBonusRatio_ = 1;
+    name = "NoName";
+    color = 15;
+    targetRace = SponsorTargetRace::FINISH;
+    targetSeason = SponsorTargetSeason::NOT_LAST;
+    paymentPerRace = 0;
+    targetBonusRatio = 1;
 }
 
 Sponsor::~Sponsor()
 {
 }
 
-void Sponsor::setName(string newName)
+void Sponsor::SetName(string newName)
 {
-    name_ = newName;
+    name = newName;
 }
 
-void Sponsor::setColor_interface()
+void Sponsor::SetColor_interface()
 {
     bool isPass;
 
@@ -58,14 +58,14 @@ void Sponsor::setColor_interface()
 
     do {
         isPass = false;
-        cin >> color_;
+        cin >> color;
         cin.get();
-        if (color_ > 0 && color_ < 16)
+        if (color > 0 && color < 16)
             isPass = true;
     } while (isPass == false);
 }
 
-void Sponsor::setTargetRace_interface()
+void Sponsor::SetTargetRace_interface()
 {
     bool isPass;
     int decision;
@@ -86,21 +86,21 @@ void Sponsor::setTargetRace_interface()
 
     switch (decision) {
     case '1':
-        targetRace_ = SponsorTargetRace::PODIUM;
+        targetRace = SponsorTargetRace::PODIUM;
         break;
     case '2':
-        targetRace_ = SponsorTargetRace::TOP_5;
+        targetRace = SponsorTargetRace::TOP_5;
         break;
     case '3':
-        targetRace_ = SponsorTargetRace::TOP_10;
+        targetRace = SponsorTargetRace::TOP_10;
         break;
     case '4':
-        targetRace_ = SponsorTargetRace::FINISH;
+        targetRace = SponsorTargetRace::FINISH;
         break;
     }
 }
 
-void Sponsor::setTargetSeason_interface()
+void Sponsor::SetTargetSeason_interface()
 {
     bool isPass;
     int decision;
@@ -122,50 +122,50 @@ void Sponsor::setTargetSeason_interface()
 
     switch (decision) {
     case '1':
-        targetSeason_ = SponsorTargetSeason::CHAMP;
+        targetSeason = SponsorTargetSeason::CHAMP;
         break;
     case '2':
-        targetSeason_ = SponsorTargetSeason::TOP_THREE;
+        targetSeason = SponsorTargetSeason::TOP_THREE;
         break;
     case '3':
-        targetSeason_ = SponsorTargetSeason::TOP_FIVE;
+        targetSeason = SponsorTargetSeason::TOP_FIVE;
         break;
     case '4':
-        targetSeason_ = SponsorTargetSeason::EVERY_RACE_PARTICIPATE;
+        targetSeason = SponsorTargetSeason::EVERY_RACE_PARTICIPATE;
         break;
     case '5':
-        targetSeason_ = SponsorTargetSeason::NOT_LAST;
+        targetSeason = SponsorTargetSeason::NOT_LAST;
         break;
     }
 }
 
-void Sponsor::setPaymentPerRace(double newPaymentPerRace)
+void Sponsor::SetPaymentPerRace(double newPaymentPerRace)
 {
-    paymentPerRace_ = newPaymentPerRace;
+    paymentPerRace = newPaymentPerRace;
 }
 
-void Sponsor::setTargetBonusRatio(double newTargetBonusRatio)
+void Sponsor::SetTargetBonusRatio(double newTargetBonusRatio)
 {
-    targetBonusRatio_ = newTargetBonusRatio;
+    targetBonusRatio = newTargetBonusRatio;
 }
 
-void Sponsor::getInfoSponsor()
+void Sponsor::GetInfoSponsor()
 {
     int i;
     bool isPass;
     char decision;
-    char color_line[20] = { 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219 };
+    char colorline[20] = { 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219 };
 
-    cout << "Sponsor " << name_ << endl;
+    cout << "Sponsor " << name << endl;
 
     cout << "Color: ";
-    SetColor(color_, 0);
+    SetColor(color, 0);
     for (i = 0; i < 20; i++)
-        cout << color_line[i];
+        cout << colorline[i];
     SetColor(15, 0);
 
     cout << "\nRace Target: ";
-    switch (targetRace_) {
+    switch (targetRace) {
     case SponsorTargetRace::PODIUM:
         cout << "Podium" << endl;
         break;
@@ -181,7 +181,7 @@ void Sponsor::getInfoSponsor()
     }
 
     cout << "Season Target: ";
-    switch (targetSeason_) {
+    switch (targetSeason) {
     case SponsorTargetSeason::CHAMP:
         cout << "One of the drivers is champion" << endl;
         break;
@@ -196,13 +196,13 @@ void Sponsor::getInfoSponsor()
         break;
     }
 
-    cout << "Income per race: " << paymentPerRace_ << endl;
+    cout << "Income per race: " << paymentPerRace << endl;
 
-    cout << "Target bonus ratio: " << targetBonusRatio_ << endl;
+    cout << "Target bonus ratio: " << targetBonusRatio << endl;
 
 }
 
-double Sponsor::getPaymentPerRace()
+double Sponsor::GetPaymentPerRace()
 {
-    return paymentPerRace_;
+    return paymentPerRace;
 }

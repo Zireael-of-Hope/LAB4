@@ -2,369 +2,349 @@
 
 Vehicle::Vehicle()
 {
-    sponsorStickerQuantity_ = 0;
-    driverName_ = "not assigned";
-    vehicleName_ = "NoName";
-    sponsorStickers_ = nullptr;
-    tyreSet_ = { TyresCompound::NOT_INSTALLED, 0 };
-    seasonComponents_.totalComponentWearRatio_ = 3;
-    seasonComponents_.powerUnitSet_.engine_1_ = { 340, 0, 0 };
-    seasonComponents_.powerUnitSet_.engine_2_ = { 340, 0, 0 };
-    seasonComponents_.powerUnitSet_.engine_3_ = { 340, 0, 0 };
-    seasonComponents_.powerUnitSet_.mguKinetic_1_ = { 800, 0, 0 };
-    seasonComponents_.powerUnitSet_.mguKinetic_2_ = { 800, 0, 0 };
-    seasonComponents_.powerUnitSet_.mguKinetic_3_ = { 800, 0, 0 };
-    seasonComponents_.powerUnitSet_.mguHeat_1_ = { 700, 0, 0 };
-    seasonComponents_.powerUnitSet_.mguHeat_2_ = { 700, 0, 0 };
-    seasonComponents_.powerUnitSet_.mguHeat_3_ = { 700, 0, 0 };
-    seasonComponents_.powerUnitSet_.turboCharger_1_ = { 500, 0, 0 };
-    seasonComponents_.powerUnitSet_.turboCharger_2_ = { 500, 0, 0 };
-    seasonComponents_.powerUnitSet_.turboCharger_3_ = { 500, 0, 0 };
-    seasonComponents_.powerUnitSet_.energyStore_1_ = { 900, 0, 0 };
-    seasonComponents_.powerUnitSet_.energyStore_2_ = { 900, 0, 0 };
-    seasonComponents_.powerUnitSet_.controlElectronics_1_ = { 450, 0, 0 };
-    seasonComponents_.powerUnitSet_.controlElectronics_1_ = { 450, 0, 0 };
-    seasonComponents_.powerUnitSet_.chosenComponentsPowerUnit_ = { InstalledComponent::NOT_FITTED, InstalledComponent::NOT_FITTED, InstalledComponent::NOT_FITTED, InstalledComponent::NOT_FITTED, InstalledComponent::NOT_FITTED, InstalledComponent::NOT_FITTED };
-    seasonComponents_.gearboxSet_.practiceGearbox_1_ = { 380, 0, 0 };
-    seasonComponents_.gearboxSet_.practiceGearbox_2_ = { 380, 0, 0 };
-    seasonComponents_.gearboxSet_.eventGearbox_1_ = { 380, 0, 0 };
-    seasonComponents_.gearboxSet_.eventGearbox_2_ = { 380, 0, 0 };
-    seasonComponents_.gearboxSet_.chosenComponentsGearbox_ = { InstalledComponent::NOT_FITTED, InstalledComponent::NOT_FITTED };
+    sponsorStickerQuantity = 0;
+    vehicleName = "NoName";
+    sponsorStickers = nullptr;
+    tyreSet = { TyresCompound::NOT_INSTALLED, 0 };
+    seasonComponents.totalComponentWearRatio = 3;
+    seasonComponents.powerUnitSet.engine1.SetFreshComponent(ComponentID::Engine);
+    seasonComponents.powerUnitSet.engine2.SetFreshComponent(ComponentID::Engine);
+    seasonComponents.powerUnitSet.engine3.SetFreshComponent(ComponentID::Engine);
+    seasonComponents.powerUnitSet.mguKinetic1.SetFreshComponent(ComponentID::MguKinetic);
+    seasonComponents.powerUnitSet.mguKinetic2.SetFreshComponent(ComponentID::MguKinetic);
+    seasonComponents.powerUnitSet.mguKinetic3.SetFreshComponent(ComponentID::MguKinetic);
+    seasonComponents.powerUnitSet.mguHeat1.SetFreshComponent(ComponentID::MguHeat);
+    seasonComponents.powerUnitSet.mguHeat2.SetFreshComponent(ComponentID::MguHeat);
+    seasonComponents.powerUnitSet.mguHeat3.SetFreshComponent(ComponentID::MguHeat);
+    seasonComponents.powerUnitSet.turboCharger1.SetFreshComponent(ComponentID::TurboCharger);
+    seasonComponents.powerUnitSet.turboCharger2.SetFreshComponent(ComponentID::TurboCharger);
+    seasonComponents.powerUnitSet.turboCharger3.SetFreshComponent(ComponentID::TurboCharger);
+    seasonComponents.powerUnitSet.energyStore1.SetFreshComponent(ComponentID::EnergyStore);
+    seasonComponents.powerUnitSet.energyStore2.SetFreshComponent(ComponentID::EnergyStore);
+    seasonComponents.powerUnitSet.controlElectronics1.SetFreshComponent(ComponentID::ControlElectronics);
+    seasonComponents.powerUnitSet.controlElectronics1.SetFreshComponent(ComponentID::ControlElectronics);
+    seasonComponents.powerUnitSet.chosenComponentsPowerUnit = { InstalledComponent::NOT_FITTED, InstalledComponent::NOT_FITTED, InstalledComponent::NOT_FITTED, InstalledComponent::NOT_FITTED, InstalledComponent::NOT_FITTED, InstalledComponent::NOT_FITTED };
+    seasonComponents.gearboxSet.practiceGearbox1.SetFreshComponent(ComponentID::Gearbox);
+    seasonComponents.gearboxSet.practiceGearbox2.SetFreshComponent(ComponentID::Gearbox);
+    seasonComponents.gearboxSet.eventGearbox1.SetFreshComponent(ComponentID::Gearbox);
+    seasonComponents.gearboxSet.eventGearbox2.SetFreshComponent(ComponentID::Gearbox);
+    seasonComponents.gearboxSet.chosenComponentsGearbox = { InstalledComponent::NOT_FITTED, InstalledComponent::NOT_FITTED };
 }
 
 Vehicle::~Vehicle()
 {
 }
 
-void Vehicle::getInfoVehicle()
+void Vehicle::GetInfo()
 {
-    getInfoVehicleDriver();
-    getInfoVehicleName();
-    getInfoVehicleSponsorSticker();
-    getInfoVehicleTyreSet();
-    getInfoVehicleTotalWear();
-    getInfoVehicleCombastionEngine();
-    geInfoVehicleMguKinetic();
-    getInfoVehicleMguHeat();
-    getInfoVehicleTurboCharger();
-    getInfoVehicleEnergyStore();
-    getInfoVehicleControlElectronics();
-    getInfoPractiseGerboxVehicle();
-    getInfoEventGerboxVehicle();
+    GetInfo();
+    GetInfoName();
+    GetSponsorStickers();
+    GetInfoTyreSet();
+    GetInfoTotalWear();
+    GetInfoCombastionEngine();
+    GetInfoVehicleMguKinetic();
+    GetInfoMguHeat();
+    GetInfoTurboCharger();
+    GetInfoEnergyStore();
+    GetInfoControlElectronics();
+    GetInfoPractiseGerbox();
+    GetInfoEventGerbox();
 }
 
-void Vehicle::getInfoVehicleTotalWear()
+void Vehicle::GetInfoTotalWear()
 {
-    cout << "Total Component Wear Ratio: " << seasonComponents_.totalComponentWearRatio_ << endl;
+    cout << "Total Component Wear Ratio: " << seasonComponents.totalComponentWearRatio << endl;
 }
 
-void Vehicle::getInfoVehicleDriver()
-{
-    cout << "Assigned Driver: " << driverName_ << endl;
-}
-
-void Vehicle::getSponsorStickers()
+void Vehicle::GetSponsorStickers()
 {
     int i;
-    for (i = 0; i < sponsorStickerQuantity_; i++)
-        cout << "  " << sponsorStickers_[i] << endl;
+    for (i = 0; i < sponsorStickerQuantity; i++)
+        cout << "  " << sponsorStickers[i] << endl;
 }
 
-void Vehicle::addSponsorSticker(string newSponsorName)
+void Vehicle::AddSponsorSticker(string newSponsorName)
 {
     int i;
-    if (sponsorStickerQuantity_ == 0) {
-        sponsorStickers_ = new string[1];
-        sponsorStickers_[0] = newSponsorName;
-        sponsorStickerQuantity_++;
+    if (sponsorStickerQuantity == 0) {
+        sponsorStickers = new string[1];
+        sponsorStickers[0] = newSponsorName;
+        sponsorStickerQuantity++;
     }
     else {
-        string* new_arr = new string[sponsorStickerQuantity_ + 1];
-        for (i = 0; i < sponsorStickerQuantity_; i++) {
-            new_arr[i] = sponsorStickers_[i];
+        string* new_arr = new string[sponsorStickerQuantity + 1];
+        for (i = 0; i < sponsorStickerQuantity; i++) {
+            new_arr[i] = sponsorStickers[i];
         }
-        new_arr[sponsorStickerQuantity_] = newSponsorName;
-        delete[] sponsorStickers_;
-        sponsorStickers_ = new_arr;
-        sponsorStickerQuantity_++;
+        new_arr[sponsorStickerQuantity] = newSponsorName;
+        delete[] sponsorStickers;
+        sponsorStickers = new_arr;
+        sponsorStickerQuantity++;
     }
 
 }
 
-bool Vehicle::deleteSponsorSticker(string nameDelete)
+bool Vehicle::DeleteSponsorSticker(string nameDelete)
 {
     int i, j;
     bool isStickerFound = false;
 
-    if (sponsorStickerQuantity_ != 0) {
-        for (i = 0; i < sponsorStickerQuantity_; i++)
-            if (sponsorStickers_[i] == nameDelete) {
+    if (sponsorStickerQuantity != 0) {
+        for (i = 0; i < sponsorStickerQuantity; i++)
+            if (sponsorStickers[i] == nameDelete) {
                 isStickerFound = true;
-                for (j = i; j < sponsorStickerQuantity_ - 1; j++)
-                    sponsorStickers_[j] = sponsorStickers_[j + 1];
+                for (j = i; j < sponsorStickerQuantity - 1; j++)
+                    sponsorStickers[j] = sponsorStickers[j + 1];
             }
         if (isStickerFound == true) {
-            string* new_arr = new string[sponsorStickerQuantity_ - 1];
+            string* new_arr = new string[sponsorStickerQuantity - 1];
 
-            for (i = 0; i < sponsorStickerQuantity_ - 1; i++)
-                new_arr[i] = sponsorStickers_[i];
+            for (i = 0; i < sponsorStickerQuantity - 1; i++)
+                new_arr[i] = sponsorStickers[i];
 
-            delete[] sponsorStickers_;
+            delete[] sponsorStickers;
 
-            sponsorStickers_ = new_arr;
-            sponsorStickerQuantity_--;
+            sponsorStickers = new_arr;
+            sponsorStickerQuantity--;
             return true;
         }
     }
     return false;
 }
 
-void Vehicle::getInfoVehicleSponsorSticker()
+void Vehicle::GetInfoName()
 {
-    int i;
-
-    cout << "Sponsor's Stickers: " << endl;
-    for (i = 0; i < sponsorStickerQuantity_; i++)
-        cout << "  " << sponsorStickers_[i] << endl;
+    cout << "Vehicle Name: " << vehicleName << endl;
 }
 
-void Vehicle::getInfoVehicleName()
+void Vehicle::GetInfoTyreSet()
 {
-    cout << "Vehicle Name: " << vehicleName_ << endl;
-}
-
-void Vehicle::getInfoVehicleTyreSet()
-{
-    switch (tyreSet_.installedTyres) {
+    switch (tyreSet.installedTyres) {
     case TyresCompound::NOT_INSTALLED:
         cout << "Tyres aren't installed" << endl;
         break;
     case TyresCompound::SOFT:
         SetColor(4, 0);  cout << "SOFT "; SetColor(15, 0); cout << "tyres are installed" << endl;
-        cout << "  Tyre Wear: " << tyreSet_.tyreWear << endl;
+        cout << "  Tyre Wear: " << tyreSet.tyreWear << endl;
         break;
     case TyresCompound::MEDIUM:
         SetColor(6, 0);  cout << "MEDIUM "; SetColor(15, 0); cout << "tyres are installed" << endl;
-        cout << "  Tyre Wear: " << tyreSet_.tyreWear << endl;
+        cout << "  Tyre Wear: " << tyreSet.tyreWear << endl;
         break;
     case TyresCompound::HARD:
         cout << "HARD tyres are installed" << endl;
-        cout << "  Tyre Wear: " << tyreSet_.tyreWear << endl;
+        cout << "  Tyre Wear: " << tyreSet.tyreWear << endl;
         break;
     }
 }
 
-void Vehicle::getInfoVehicleCombastionEngine()
+void Vehicle::GetInfoCombastionEngine()
 {
     cout << "Internal Combastion Engine: ";
-    switch (seasonComponents_.powerUnitSet_.chosenComponentsPowerUnit_.internalCombastionEngine_) {
+    switch (seasonComponents.powerUnitSet.chosenComponentsPowerUnit.internalCombastionEngine) {
     case InstalledComponent::NOT_FITTED:
         cout << "not fitted" << endl;
         break;
     case InstalledComponent::COMPONENT_1:
         cout << "1" << endl;
-        cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.engine_1_.expectedLifespan << endl;
-        cout << "  Track Time: " << seasonComponents_.powerUnitSet_.engine_1_.trackTime << endl;
-        cout << "  Wear: " << seasonComponents_.powerUnitSet_.engine_1_.wear << endl;
+        cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.engine1.GetExpectedLifespan() << endl;
+        cout << "  Track Time: " << seasonComponents.powerUnitSet.engine1.GetTrackTime() << endl;
+        cout << "  Wear: " << seasonComponents.powerUnitSet.engine1.GetWear() << endl;
         break;
     case InstalledComponent::COMPONENT_2:
         cout << "2" << endl;
-        cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.engine_2_.expectedLifespan << endl;
-        cout << "  Track Time: " << seasonComponents_.powerUnitSet_.engine_2_.trackTime << endl;
-        cout << "  Wear: " << seasonComponents_.powerUnitSet_.engine_2_.wear << endl;
+        cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.engine2.GetExpectedLifespan() << endl;
+        cout << "  Track Time: " << seasonComponents.powerUnitSet.engine2.GetTrackTime() << endl;
+        cout << "  Wear: " << seasonComponents.powerUnitSet.engine2.GetWear() << endl;
         break;
     case InstalledComponent::COMPONENT_3:
         cout << "3" << endl;
-        cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.engine_3_.expectedLifespan << endl;
-        cout << "  Track Time: " << seasonComponents_.powerUnitSet_.engine_3_.trackTime << endl;
-        cout << "  Wear: " << seasonComponents_.powerUnitSet_.engine_3_.wear << endl;
+        cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.engine3.GetExpectedLifespan() << endl;
+        cout << "  Track Time: " << seasonComponents.powerUnitSet.engine3.GetTrackTime() << endl;
+        cout << "  Wear: " << seasonComponents.powerUnitSet.engine3.GetWear() << endl;
         break;
     }
 }
 
-void Vehicle::geInfoVehicleMguKinetic()
+void Vehicle::GetInfoVehicleMguKinetic()
 {
     cout << "MGU Kinetic: ";
-    switch (seasonComponents_.powerUnitSet_.chosenComponentsPowerUnit_.mguKinetic_) {
+    switch (seasonComponents.powerUnitSet.chosenComponentsPowerUnit.mguKinetic) {
     case InstalledComponent::NOT_FITTED:
         cout << "not fitted" << endl;
         break;
     case InstalledComponent::COMPONENT_1:
         cout << "1" << endl;
-        cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.mguKinetic_1_.expectedLifespan << endl;
-        cout << "  Track Time: " << seasonComponents_.powerUnitSet_.mguKinetic_1_.trackTime << endl;
-        cout << "  Wear: " << seasonComponents_.powerUnitSet_.mguKinetic_1_.wear << endl;
+        cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.mguKinetic1.GetExpectedLifespan() << endl;
+        cout << "  Track Time: " << seasonComponents.powerUnitSet.mguKinetic1.GetTrackTime() << endl;
+        cout << "  Wear: " << seasonComponents.powerUnitSet.mguKinetic1.GetWear() << endl;
         break;
     case InstalledComponent::COMPONENT_2:
         cout << "2" << endl;
-        cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.mguKinetic_2_.expectedLifespan << endl;
-        cout << "  Track Time: " << seasonComponents_.powerUnitSet_.mguKinetic_2_.trackTime << endl;
-        cout << "  Wear: " << seasonComponents_.powerUnitSet_.mguKinetic_2_.wear << endl;
+        cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.mguKinetic2.GetExpectedLifespan() << endl;
+        cout << "  Track Time: " << seasonComponents.powerUnitSet.mguKinetic2.GetTrackTime() << endl;
+        cout << "  Wear: " << seasonComponents.powerUnitSet.mguKinetic2.GetWear() << endl;
         break;
     case InstalledComponent::COMPONENT_3:
         cout << "3" << endl;
-        cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.mguKinetic_2_.expectedLifespan << endl;
-        cout << "  Track Time: " << seasonComponents_.powerUnitSet_.mguKinetic_2_.trackTime << endl;
-        cout << "  Wear: " << seasonComponents_.powerUnitSet_.mguKinetic_2_.wear << endl;
+        cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.mguKinetic2.GetExpectedLifespan() << endl;
+        cout << "  Track Time: " << seasonComponents.powerUnitSet.mguKinetic2.GetTrackTime() << endl;
+        cout << "  Wear: " << seasonComponents.powerUnitSet.mguKinetic2.GetWear() << endl;
         break;
     }
 }
 
-void Vehicle::getInfoVehicleMguHeat()
+void Vehicle::GetInfoMguHeat()
 {
     cout << "MGU Heat: ";
-    switch (seasonComponents_.powerUnitSet_.chosenComponentsPowerUnit_.mguHeat_) {
+    switch (seasonComponents.powerUnitSet.chosenComponentsPowerUnit.mguHeat) {
     case InstalledComponent::NOT_FITTED:
         cout << "not fitted" << endl;
         break;
     case InstalledComponent::COMPONENT_1:
         cout << "1" << endl;
-        cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.mguHeat_1_.expectedLifespan << endl;
-        cout << "  Track Time: " << seasonComponents_.powerUnitSet_.mguHeat_1_.trackTime << endl;
-        cout << "  Wear: " << seasonComponents_.powerUnitSet_.mguHeat_1_.wear << endl;
+        cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.mguHeat1.GetExpectedLifespan() << endl;
+        cout << "  Track Time: " << seasonComponents.powerUnitSet.mguHeat1.GetTrackTime() << endl;
+        cout << "  Wear: " << seasonComponents.powerUnitSet.mguHeat1.GetWear() << endl;
         break;
     case InstalledComponent::COMPONENT_2:
         cout << "2" << endl;
-        cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.mguHeat_2_.expectedLifespan << endl;
-        cout << "  Track Time: " << seasonComponents_.powerUnitSet_.mguHeat_2_.trackTime << endl;
-        cout << "  Wear: " << seasonComponents_.powerUnitSet_.mguHeat_2_.wear << endl;
+        cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.mguHeat2.GetExpectedLifespan() << endl;
+        cout << "  Track Time: " << seasonComponents.powerUnitSet.mguHeat2.GetTrackTime() << endl;
+        cout << "  Wear: " << seasonComponents.powerUnitSet.mguHeat2.GetWear() << endl;
         break;
     case InstalledComponent::COMPONENT_3:
         cout << "3" << endl;
-        cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.mguHeat_3_.expectedLifespan << endl;
-        cout << "  Track Time: " << seasonComponents_.powerUnitSet_.mguHeat_3_.trackTime << endl;
-        cout << "  Wear: " << seasonComponents_.powerUnitSet_.mguHeat_3_.wear << endl;
+        cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.mguHeat3.GetExpectedLifespan() << endl;
+        cout << "  Track Time: " << seasonComponents.powerUnitSet.mguHeat3.GetTrackTime() << endl;
+        cout << "  Wear: " << seasonComponents.powerUnitSet.mguHeat3.GetWear() << endl;
         break;
     }
 }
 
-void Vehicle::getInfoVehicleTurboCharger()
+void Vehicle::GetInfoTurboCharger()
 {
     cout << "Turbo Charger: ";
-    switch (seasonComponents_.powerUnitSet_.chosenComponentsPowerUnit_.turboCharger_) {
+    switch (seasonComponents.powerUnitSet.chosenComponentsPowerUnit.turboCharger) {
     case InstalledComponent::NOT_FITTED:
         cout << "not fitted" << endl;
         break;
     case InstalledComponent::COMPONENT_1:
         cout << "1" << endl;
-        cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.turboCharger_1_.expectedLifespan << endl;
-        cout << "  Track Time: " << seasonComponents_.powerUnitSet_.turboCharger_1_.trackTime << endl;
-        cout << "  Wear: " << seasonComponents_.powerUnitSet_.turboCharger_1_.wear << endl;
+        cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.turboCharger1.GetExpectedLifespan() << endl;
+        cout << "  Track Time: " << seasonComponents.powerUnitSet.turboCharger1.GetTrackTime() << endl;
+        cout << "  Wear: " << seasonComponents.powerUnitSet.turboCharger1.GetWear() << endl;
         break;
     case InstalledComponent::COMPONENT_2:
         cout << "2" << endl;
-        cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.turboCharger_2_.expectedLifespan << endl;
-        cout << "  Track Time: " << seasonComponents_.powerUnitSet_.turboCharger_2_.trackTime << endl;
-        cout << "  Wear: " << seasonComponents_.powerUnitSet_.turboCharger_2_.wear << endl;
+        cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.turboCharger2.GetExpectedLifespan() << endl;
+        cout << "  Track Time: " << seasonComponents.powerUnitSet.turboCharger2.GetTrackTime() << endl;
+        cout << "  Wear: " << seasonComponents.powerUnitSet.turboCharger2.GetWear() << endl;
         break;
     case InstalledComponent::COMPONENT_3:
         cout << "3" << endl;
-        cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.turboCharger_3_.expectedLifespan << endl;
-        cout << "  Track Time: " << seasonComponents_.powerUnitSet_.turboCharger_3_.trackTime << endl;
-        cout << "  Wear: " << seasonComponents_.powerUnitSet_.turboCharger_3_.wear << endl;
+        cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.turboCharger3.GetExpectedLifespan() << endl;
+        cout << "  Track Time: " << seasonComponents.powerUnitSet.turboCharger3.GetTrackTime() << endl;
+        cout << "  Wear: " << seasonComponents.powerUnitSet.turboCharger3.GetWear() << endl;
         break;
     }
 }
 
-void Vehicle::getInfoVehicleEnergyStore()
+void Vehicle::GetInfoEnergyStore()
 {
     cout << "Energy Store: ";
-    switch (seasonComponents_.powerUnitSet_.chosenComponentsPowerUnit_.energyStore_) {
+    switch (seasonComponents.powerUnitSet.chosenComponentsPowerUnit.energyStore) {
     case InstalledComponent::NOT_FITTED:
         cout << "not fitted" << endl;
         break;
     case InstalledComponent::COMPONENT_1:
         cout << "1" << endl;
-        cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.energyStore_1_.expectedLifespan << endl;
-        cout << "  Track Time: " << seasonComponents_.powerUnitSet_.energyStore_1_.trackTime << endl;
-        cout << "  Wear: " << seasonComponents_.powerUnitSet_.energyStore_1_.wear << endl;
+        cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.energyStore1.GetExpectedLifespan() << endl;
+        cout << "  Track Time: " << seasonComponents.powerUnitSet.energyStore1.GetTrackTime() << endl;
+        cout << "  Wear: " << seasonComponents.powerUnitSet.energyStore1.GetWear() << endl;
         break;
     case InstalledComponent::COMPONENT_2:
         cout << "2" << endl;
-        cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.energyStore_2_.expectedLifespan << endl;
-        cout << "  Track Time: " << seasonComponents_.powerUnitSet_.energyStore_2_.trackTime << endl;
-        cout << "  Wear: " << seasonComponents_.powerUnitSet_.energyStore_2_.wear << endl;
+        cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.energyStore2.GetExpectedLifespan() << endl;
+        cout << "  Track Time: " << seasonComponents.powerUnitSet.energyStore2.GetTrackTime() << endl;
+        cout << "  Wear: " << seasonComponents.powerUnitSet.energyStore2.GetWear() << endl;
         break;
     }
 }
 
-void Vehicle::getInfoVehicleControlElectronics()
+void Vehicle::GetInfoControlElectronics()
 {
     cout << "Control Electronics: ";
-    switch (seasonComponents_.powerUnitSet_.chosenComponentsPowerUnit_.controlElectronics_) {
+    switch (seasonComponents.powerUnitSet.chosenComponentsPowerUnit.controlElectronics) {
     case InstalledComponent::NOT_FITTED:
         cout << "not fitted" << endl;
         break;
     case InstalledComponent::COMPONENT_1:
         cout << "1" << endl;
-        cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.controlElectronics_1_.expectedLifespan << endl;
-        cout << "  Track Time: " << seasonComponents_.powerUnitSet_.controlElectronics_1_.trackTime << endl;
-        cout << "  Wear: " << seasonComponents_.powerUnitSet_.controlElectronics_1_.wear << endl;
+        cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.controlElectronics1.GetExpectedLifespan() << endl;
+        cout << "  Track Time: " << seasonComponents.powerUnitSet.controlElectronics1.GetTrackTime() << endl;
+        cout << "  Wear: " << seasonComponents.powerUnitSet.controlElectronics1.GetWear() << endl;
         break;
     case InstalledComponent::COMPONENT_2:
         cout << "2" << endl;
-        cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.controlElectronics_2_.expectedLifespan << endl;
-        cout << "  Track Time: " << seasonComponents_.powerUnitSet_.controlElectronics_2_.trackTime << endl;
-        cout << "  Wear: " << seasonComponents_.powerUnitSet_.controlElectronics_2_.wear << endl;
+        cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.controlElectronics2.GetExpectedLifespan() << endl;
+        cout << "  Track Time: " << seasonComponents.powerUnitSet.controlElectronics2.GetTrackTime() << endl;
+        cout << "  Wear: " << seasonComponents.powerUnitSet.controlElectronics2.GetWear() << endl;
         break;
     }
 }
 
-void Vehicle::getInfoPractiseGerboxVehicle()
+void Vehicle::GetInfoPractiseGerbox()
 {
     cout << "Practise Gearbox: ";
-    switch (seasonComponents_.gearboxSet_.chosenComponentsGearbox_.practiceGearbox_) {
+    switch (seasonComponents.gearboxSet.chosenComponentsGearbox.practiceGearbox) {
     case InstalledComponent::NOT_FITTED:
         cout << "not fitted" << endl;
         break;
     case InstalledComponent::COMPONENT_1:
         cout << "1" << endl;
-        cout << "  Expected Lifespan: " << seasonComponents_.gearboxSet_.practiceGearbox_1_.expectedLifespan << endl;
-        cout << "  Track Time: " << seasonComponents_.gearboxSet_.practiceGearbox_1_.trackTime << endl;
-        cout << "  Wear: " << seasonComponents_.gearboxSet_.practiceGearbox_1_.wear << endl;
+        cout << "  Expected Lifespan: " << seasonComponents.gearboxSet.practiceGearbox1.GetExpectedLifespan() << endl;
+        cout << "  Track Time: " << seasonComponents.gearboxSet.practiceGearbox1.GetTrackTime() << endl;
+        cout << "  Wear: " << seasonComponents.gearboxSet.practiceGearbox1.GetWear() << endl;
         break;
     case InstalledComponent::COMPONENT_2:
         cout << "2" << endl;
-        cout << "  Expected Lifespan: " << seasonComponents_.gearboxSet_.practiceGearbox_2_.expectedLifespan << endl;
-        cout << "  Track Time: " << seasonComponents_.gearboxSet_.practiceGearbox_2_.trackTime << endl;
-        cout << "  Wear: " << seasonComponents_.gearboxSet_.practiceGearbox_2_.wear << endl;
+        cout << "  Expected Lifespan: " << seasonComponents.gearboxSet.practiceGearbox2.GetExpectedLifespan() << endl;
+        cout << "  Track Time: " << seasonComponents.gearboxSet.practiceGearbox2.GetTrackTime() << endl;
+        cout << "  Wear: " << seasonComponents.gearboxSet.practiceGearbox2.GetWear() << endl;
         break;
     }
 }
 
-void Vehicle::getInfoEventGerboxVehicle()
+void Vehicle::GetInfoEventGerbox()
 {
     cout << "Event Gearbox: ";
-    switch (seasonComponents_.gearboxSet_.chosenComponentsGearbox_.eventGearbox_) {
+    switch (seasonComponents.gearboxSet.chosenComponentsGearbox.eventGearbox) {
     case InstalledComponent::NOT_FITTED:
         cout << "not fitted" << endl;
         break;
     case InstalledComponent::COMPONENT_1:
         cout << "1" << endl;
-        cout << "  Expected Lifespan: " << seasonComponents_.gearboxSet_.eventGearbox_1_.expectedLifespan << endl;
-        cout << "  Track Time: " << seasonComponents_.gearboxSet_.eventGearbox_1_.trackTime << endl;
-        cout << "  Wear: " << seasonComponents_.gearboxSet_.eventGearbox_1_.wear << endl;
+        cout << "  Expected Lifespan: " << seasonComponents.gearboxSet.eventGearbox1.GetExpectedLifespan() << endl;
+        cout << "  Track Time: " << seasonComponents.gearboxSet.eventGearbox1.GetTrackTime() << endl;
+        cout << "  Wear: " << seasonComponents.gearboxSet.eventGearbox1.GetWear() << endl;
         break;
     case InstalledComponent::COMPONENT_2:
         cout << "2" << endl;
-        cout << "  Expected Lifespan: " << seasonComponents_.gearboxSet_.eventGearbox_2_.expectedLifespan << endl;
-        cout << "  Track Time: " << seasonComponents_.gearboxSet_.eventGearbox_2_.trackTime << endl;
-        cout << "  Wear: " << seasonComponents_.gearboxSet_.eventGearbox_2_.wear << endl;
+        cout << "  Expected Lifespan: " << seasonComponents.gearboxSet.eventGearbox2.GetExpectedLifespan() << endl;
+        cout << "  Track Time: " << seasonComponents.gearboxSet.eventGearbox2.GetTrackTime() << endl;
+        cout << "  Wear: " << seasonComponents.gearboxSet.eventGearbox2.GetWear() << endl;
         break;
     }
 }
 
-void Vehicle::setVehicleName(string newName)
+void Vehicle::SetName(string newName)
 {
-    vehicleName_ = newName;
+    vehicleName = newName;
 }
 
-void Vehicle::setVehicleDriver(string newName)
-{
-    driverName_ = newName;
-}
-
-void Vehicle::setVehicleTyres_interface()
+void Vehicle::SetTyres_interface()
 {
     bool isPass;
     char decision;
@@ -373,21 +353,21 @@ void Vehicle::setVehicleTyres_interface()
     cout << "Current Tyres: ";
     SetColor(15, 0);
 
-    switch (tyreSet_.installedTyres) {
+    switch (tyreSet.installedTyres) {
     case TyresCompound::NOT_INSTALLED:
         cout << " Tyres aren't installed" << endl;
         break;
     case TyresCompound::SOFT:
         SetColor(4, 0);  cout << "SOFT "; SetColor(15, 0); cout << "tyres are installed";
-        cout << " Tyre Wear: " << tyreSet_.tyreWear << endl;
+        cout << " Tyre Wear: " << tyreSet.tyreWear << endl;
         break;
     case TyresCompound::MEDIUM:
         SetColor(6, 0);  cout << "MEDIUM "; SetColor(15, 0); cout << "tyres are installed";
-        cout << " Tyre Wear: " << tyreSet_.tyreWear << endl;
+        cout << " Tyre Wear: " << tyreSet.tyreWear << endl;
         break;
     case TyresCompound::HARD:
         cout << "HARD tyres are installed";
-        cout << " Tyre Wear: " << tyreSet_.tyreWear << endl;
+        cout << " Tyre Wear: " << tyreSet.tyreWear << endl;
         break;
     }
 
@@ -410,23 +390,23 @@ void Vehicle::setVehicleTyres_interface()
 
     switch (decision) {
     case '1':
-        tyreSet_.installedTyres = TyresCompound::SOFT;
-        tyreSet_.tyreWear = 0;
+        tyreSet.installedTyres = TyresCompound::SOFT;
+        tyreSet.tyreWear = 0;
         break;
     case '2':
-        tyreSet_.installedTyres = TyresCompound::MEDIUM;
-        tyreSet_.tyreWear = 0;
+        tyreSet.installedTyres = TyresCompound::MEDIUM;
+        tyreSet.tyreWear = 0;
         break;
     case '3':
-        tyreSet_.installedTyres = TyresCompound::HARD;
-        tyreSet_.tyreWear = 0;
+        tyreSet.installedTyres = TyresCompound::HARD;
+        tyreSet.tyreWear = 0;
         break;
     case '0':
         break;
     }
 }
 
-void Vehicle::setVehicleComponents_interface()
+void Vehicle::SetComponents_interface()
 {
     bool isPass, isCycled;
     char decision;
@@ -441,19 +421,19 @@ void Vehicle::setVehicleComponents_interface()
         cout << "Power Unit:" << endl;
         SetColor(15, 0);
 
-        cout << "1) "; getInfoVehicleCombastionEngine();
-        cout << "2) "; geInfoVehicleMguKinetic();
-        cout << "3) "; getInfoVehicleMguHeat();
-        cout << "4) "; getInfoVehicleTurboCharger();
-        cout << "5) "; getInfoVehicleEnergyStore();
-        cout << "6) "; getInfoVehicleControlElectronics();
+        cout << "1) "; GetInfoCombastionEngine();
+        cout << "2) "; GetInfoVehicleMguKinetic();
+        cout << "3) "; GetInfoMguHeat();
+        cout << "4) "; GetInfoTurboCharger();
+        cout << "5) "; GetInfoEnergyStore();
+        cout << "6) "; GetInfoControlElectronics();
 
         SetColor(14, 0);
         cout << "\nGearbox:" << endl;
         SetColor(15, 0);
 
-        cout << "7) "; getInfoPractiseGerboxVehicle();
-        cout << "8) "; getInfoEventGerboxVehicle();
+        cout << "7) "; GetInfoPractiseGerbox();
+        cout << "8) "; GetInfoEventGerbox();
 
         cout << "\nPick component you want to change (0 - return)...";
 
@@ -469,17 +449,17 @@ void Vehicle::setVehicleComponents_interface()
         case '1':
             SetColor(14, 0);  cout << "Internal Combastion Engine:" << endl; SetColor(15, 0);
             cout << "1:" << endl;
-            cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.engine_1_.expectedLifespan << endl;
-            cout << "  Track Time: " << seasonComponents_.powerUnitSet_.engine_1_.trackTime << endl;
-            cout << "  Wear: " << seasonComponents_.powerUnitSet_.engine_1_.wear << endl;
+            cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.engine1.GetExpectedLifespan() << endl;
+            cout << "  Track Time: " << seasonComponents.powerUnitSet.engine1.GetTrackTime() << endl;
+            cout << "  Wear: " << seasonComponents.powerUnitSet.engine1.GetWear() << endl;
             cout << "2:" << endl;
-            cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.engine_2_.expectedLifespan << endl;
-            cout << "  Track Time: " << seasonComponents_.powerUnitSet_.engine_2_.trackTime << endl;
-            cout << "  Wear: " << seasonComponents_.powerUnitSet_.engine_2_.wear << endl;
+            cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.engine2.GetExpectedLifespan() << endl;
+            cout << "  Track Time: " << seasonComponents.powerUnitSet.engine2.GetTrackTime() << endl;
+            cout << "  Wear: " << seasonComponents.powerUnitSet.engine2.GetWear() << endl;
             cout << "3:" << endl;
-            cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.engine_3_.expectedLifespan << endl;
-            cout << "  Track Time: " << seasonComponents_.powerUnitSet_.engine_3_.trackTime << endl;
-            cout << "  Wear: " << seasonComponents_.powerUnitSet_.engine_3_.wear << endl;
+            cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.engine3.GetExpectedLifespan() << endl;
+            cout << "  Track Time: " << seasonComponents.powerUnitSet.engine3.GetTrackTime() << endl;
+            cout << "  Wear: " << seasonComponents.powerUnitSet.engine3.GetWear() << endl;
 
             cout << "\nPick Engine you want to fit or press 4 to take off the fitted component (0 - return)...";
 
@@ -494,22 +474,22 @@ void Vehicle::setVehicleComponents_interface()
                 switch (decision) {
                 case '1':
                     cout << "\n\nFirst engine has been fitted.";
-                    seasonComponents_.powerUnitSet_.chosenComponentsPowerUnit_.internalCombastionEngine_ = InstalledComponent::COMPONENT_1;
+                    seasonComponents.powerUnitSet.chosenComponentsPowerUnit.internalCombastionEngine = InstalledComponent::COMPONENT_1;
                     Sleep(1500);
                     break;
                 case '2':
                     cout << "\n\nSecond engine has been fitted.";
-                    seasonComponents_.powerUnitSet_.chosenComponentsPowerUnit_.internalCombastionEngine_ = InstalledComponent::COMPONENT_2;
+                    seasonComponents.powerUnitSet.chosenComponentsPowerUnit.internalCombastionEngine = InstalledComponent::COMPONENT_2;
                     Sleep(1500);
                     break;
                 case '3':
                     cout << "\n\nThird engine has been fitted.";
-                    seasonComponents_.powerUnitSet_.chosenComponentsPowerUnit_.internalCombastionEngine_ = InstalledComponent::COMPONENT_3;
+                    seasonComponents.powerUnitSet.chosenComponentsPowerUnit.internalCombastionEngine = InstalledComponent::COMPONENT_3;
                     Sleep(1500);
                     break;
                 case '4':
                     cout << "\n\nComponent has been taken off.";
-                    seasonComponents_.powerUnitSet_.chosenComponentsPowerUnit_.internalCombastionEngine_ = InstalledComponent::NOT_FITTED;
+                    seasonComponents.powerUnitSet.chosenComponentsPowerUnit.internalCombastionEngine = InstalledComponent::NOT_FITTED;
                     Sleep(1500);
                     break;
                 case '0':
@@ -519,17 +499,17 @@ void Vehicle::setVehicleComponents_interface()
         case '2':
             SetColor(14, 0);  cout << "MGU Kinetic:" << endl; SetColor(15, 0);
             cout << "1:" << endl;
-            cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.mguKinetic_1_.expectedLifespan << endl;
-            cout << "  Track Time: " << seasonComponents_.powerUnitSet_.mguKinetic_1_.trackTime << endl;
-            cout << "  Wear: " << seasonComponents_.powerUnitSet_.mguKinetic_1_.wear << endl;
+            cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.mguKinetic1.GetExpectedLifespan() << endl;
+            cout << "  Track Time: " << seasonComponents.powerUnitSet.mguKinetic1.GetTrackTime() << endl;
+            cout << "  Wear: " << seasonComponents.powerUnitSet.mguKinetic1.GetWear() << endl;
             cout << "2:" << endl;
-            cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.mguKinetic_2_.expectedLifespan << endl;
-            cout << "  Track Time: " << seasonComponents_.powerUnitSet_.mguKinetic_2_.trackTime << endl;
-            cout << "  Wear: " << seasonComponents_.powerUnitSet_.mguKinetic_2_.wear << endl;
+            cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.mguKinetic2.GetExpectedLifespan() << endl;
+            cout << "  Track Time: " << seasonComponents.powerUnitSet.mguKinetic2.GetTrackTime() << endl;
+            cout << "  Wear: " << seasonComponents.powerUnitSet.mguKinetic2.GetWear() << endl;
             cout << "3: " << endl;
-            cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.mguKinetic_3_.expectedLifespan << endl;
-            cout << "  Track Time: " << seasonComponents_.powerUnitSet_.mguKinetic_3_.trackTime << endl;
-            cout << "  Wear: " << seasonComponents_.powerUnitSet_.mguKinetic_3_.wear << endl;
+            cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.mguKinetic3.GetExpectedLifespan() << endl;
+            cout << "  Track Time: " << seasonComponents.powerUnitSet.mguKinetic3.GetTrackTime() << endl;
+            cout << "  Wear: " << seasonComponents.powerUnitSet.mguKinetic3.GetWear() << endl;
 
             cout << "\nPick MGU Kinetic you want to fit or press 4 to take off the fitted component (0 - return)...";
 
@@ -544,22 +524,22 @@ void Vehicle::setVehicleComponents_interface()
                 switch (decision) {
                 case '1':
                     cout << "\n\nFirst MGU Kinetic has been fitted.";
-                    seasonComponents_.powerUnitSet_.chosenComponentsPowerUnit_.mguKinetic_ = InstalledComponent::COMPONENT_1;
+                    seasonComponents.powerUnitSet.chosenComponentsPowerUnit.mguKinetic = InstalledComponent::COMPONENT_1;
                     Sleep(1500);
                     break;
                 case '2':
                     cout << "\n\nSecond MGU Kinetic has been fitted.";
-                    seasonComponents_.powerUnitSet_.chosenComponentsPowerUnit_.mguKinetic_ = InstalledComponent::COMPONENT_2;
+                    seasonComponents.powerUnitSet.chosenComponentsPowerUnit.mguKinetic = InstalledComponent::COMPONENT_2;
                     Sleep(1500);
                     break;
                 case '3':
                     cout << "\n\nThird MGU Kinetic has been fitted.";
-                    seasonComponents_.powerUnitSet_.chosenComponentsPowerUnit_.mguKinetic_ = InstalledComponent::COMPONENT_3;
+                    seasonComponents.powerUnitSet.chosenComponentsPowerUnit.mguKinetic = InstalledComponent::COMPONENT_3;
                     Sleep(1500);
                     break;
                 case '4':
                     cout << "\n\nComponent has been taken off.";
-                    seasonComponents_.powerUnitSet_.chosenComponentsPowerUnit_.mguKinetic_ = InstalledComponent::NOT_FITTED;
+                    seasonComponents.powerUnitSet.chosenComponentsPowerUnit.mguKinetic = InstalledComponent::NOT_FITTED;
                     Sleep(1500);
                     break;
                 case '0':
@@ -569,17 +549,17 @@ void Vehicle::setVehicleComponents_interface()
         case '3':
             SetColor(14, 0);  cout << "MGU Heat:" << endl; SetColor(15, 0);
             cout << "1:" << endl;
-            cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.mguHeat_1_.expectedLifespan << endl;
-            cout << "  Track Time: " << seasonComponents_.powerUnitSet_.mguHeat_1_.trackTime << endl;
-            cout << "  Wear: " << seasonComponents_.powerUnitSet_.mguHeat_1_.wear << endl;
+            cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.mguHeat1.GetExpectedLifespan() << endl;
+            cout << "  Track Time: " << seasonComponents.powerUnitSet.mguHeat1.GetTrackTime() << endl;
+            cout << "  Wear: " << seasonComponents.powerUnitSet.mguHeat1.GetWear() << endl;
             cout << "2:" << endl;
-            cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.mguHeat_2_.expectedLifespan << endl;
-            cout << "  Track Time: " << seasonComponents_.powerUnitSet_.mguHeat_2_.trackTime << endl;
-            cout << "  Wear: " << seasonComponents_.powerUnitSet_.mguHeat_2_.wear << endl;
+            cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.mguHeat2.GetExpectedLifespan() << endl;
+            cout << "  Track Time: " << seasonComponents.powerUnitSet.mguHeat2.GetTrackTime() << endl;
+            cout << "  Wear: " << seasonComponents.powerUnitSet.mguHeat2.GetWear() << endl;
             cout << "3:" << endl;
-            cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.mguHeat_3_.expectedLifespan << endl;
-            cout << "  Track Time: " << seasonComponents_.powerUnitSet_.mguHeat_3_.trackTime << endl;
-            cout << "  Wear: " << seasonComponents_.powerUnitSet_.mguHeat_3_.wear << endl;
+            cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.mguHeat3.GetExpectedLifespan() << endl;
+            cout << "  Track Time: " << seasonComponents.powerUnitSet.mguHeat3.GetTrackTime() << endl;
+            cout << "  Wear: " << seasonComponents.powerUnitSet.mguHeat3.GetWear() << endl;
 
             cout << "\nPick MGU Heat you want to fit or press 4 to take off the fitted component (0 - return)...";
 
@@ -594,22 +574,22 @@ void Vehicle::setVehicleComponents_interface()
                 switch (decision) {
                 case '1':
                     cout << "\n\nFirst MGU Heat has been fitted.";
-                    seasonComponents_.powerUnitSet_.chosenComponentsPowerUnit_.mguHeat_ = InstalledComponent::COMPONENT_1;
+                    seasonComponents.powerUnitSet.chosenComponentsPowerUnit.mguHeat = InstalledComponent::COMPONENT_1;
                     Sleep(1500);
                     break;
                 case '2':
                     cout << "\n\nSecond MGU Heat has been fitted.";
-                    seasonComponents_.powerUnitSet_.chosenComponentsPowerUnit_.mguHeat_ = InstalledComponent::COMPONENT_2;
+                    seasonComponents.powerUnitSet.chosenComponentsPowerUnit.mguHeat = InstalledComponent::COMPONENT_2;
                     Sleep(1500);
                     break;
                 case '3':
                     cout << "\n\nThird MGU Heat has been fitted.";
-                    seasonComponents_.powerUnitSet_.chosenComponentsPowerUnit_.mguHeat_ = InstalledComponent::COMPONENT_3;
+                    seasonComponents.powerUnitSet.chosenComponentsPowerUnit.mguHeat = InstalledComponent::COMPONENT_3;
                     Sleep(1500);
                     break;
                 case '4':
                     cout << "\n\nComponent has been taken off.";
-                    seasonComponents_.powerUnitSet_.chosenComponentsPowerUnit_.mguHeat_ = InstalledComponent::NOT_FITTED;
+                    seasonComponents.powerUnitSet.chosenComponentsPowerUnit.mguHeat = InstalledComponent::NOT_FITTED;
                     Sleep(1500);
                     break;
                 case '0':
@@ -619,17 +599,17 @@ void Vehicle::setVehicleComponents_interface()
         case '4':
             SetColor(14, 0);  cout << "Turbo Charger:" << endl; SetColor(15, 0);
             cout << "1:" << endl;
-            cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.turboCharger_1_.expectedLifespan << endl;
-            cout << "  Track Time: " << seasonComponents_.powerUnitSet_.turboCharger_1_.trackTime << endl;
-            cout << "  Wear: " << seasonComponents_.powerUnitSet_.turboCharger_1_.wear << endl;
+            cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.turboCharger1.GetExpectedLifespan() << endl;
+            cout << "  Track Time: " << seasonComponents.powerUnitSet.turboCharger1.GetTrackTime() << endl;
+            cout << "  Wear: " << seasonComponents.powerUnitSet.turboCharger1.GetWear() << endl;
             cout << "2:" << endl;
-            cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.turboCharger_2_.expectedLifespan << endl;
-            cout << "  Track Time: " << seasonComponents_.powerUnitSet_.turboCharger_2_.trackTime << endl;
-            cout << "  Wear: " << seasonComponents_.powerUnitSet_.turboCharger_2_.wear << endl;
+            cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.turboCharger2.GetExpectedLifespan() << endl;
+            cout << "  Track Time: " << seasonComponents.powerUnitSet.turboCharger2.GetTrackTime() << endl;
+            cout << "  Wear: " << seasonComponents.powerUnitSet.turboCharger2.GetWear() << endl;
             cout << "3:" << endl;
-            cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.turboCharger_3_.expectedLifespan << endl;
-            cout << "  Track Time: " << seasonComponents_.powerUnitSet_.turboCharger_3_.trackTime << endl;
-            cout << "  Wear: " << seasonComponents_.powerUnitSet_.turboCharger_3_.wear << endl;
+            cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.turboCharger3.GetExpectedLifespan() << endl;
+            cout << "  Track Time: " << seasonComponents.powerUnitSet.turboCharger3.GetTrackTime() << endl;
+            cout << "  Wear: " << seasonComponents.powerUnitSet.turboCharger3.GetWear() << endl;
 
             cout << "\nPick Turbo Charger you want to fit or press 4 to take off the fitted component (0 - return)...";
 
@@ -644,22 +624,22 @@ void Vehicle::setVehicleComponents_interface()
                 switch (decision) {
                 case '1':
                     cout << "\n\nFirst Turbo Charger has been fitted.";
-                    seasonComponents_.powerUnitSet_.chosenComponentsPowerUnit_.turboCharger_ = InstalledComponent::COMPONENT_1;
+                    seasonComponents.powerUnitSet.chosenComponentsPowerUnit.turboCharger = InstalledComponent::COMPONENT_1;
                     Sleep(1500);
                     break;
                 case '2':
                     cout << "\n\nSecond Turbo Charger has been fitted.";
-                    seasonComponents_.powerUnitSet_.chosenComponentsPowerUnit_.turboCharger_ = InstalledComponent::COMPONENT_2;
+                    seasonComponents.powerUnitSet.chosenComponentsPowerUnit.turboCharger = InstalledComponent::COMPONENT_2;
                     Sleep(1500);
                     break;
                 case '3':
                     cout << "\n\nThird Turbo Charger has been fitted.";
-                    seasonComponents_.powerUnitSet_.chosenComponentsPowerUnit_.turboCharger_ = InstalledComponent::COMPONENT_3;
+                    seasonComponents.powerUnitSet.chosenComponentsPowerUnit.turboCharger = InstalledComponent::COMPONENT_3;
                     Sleep(1500);
                     break;
                 case '4':
                     cout << "\n\nComponent has been taken off.";
-                    seasonComponents_.powerUnitSet_.chosenComponentsPowerUnit_.turboCharger_ = InstalledComponent::NOT_FITTED;
+                    seasonComponents.powerUnitSet.chosenComponentsPowerUnit.turboCharger = InstalledComponent::NOT_FITTED;
                     Sleep(1500);
                     break;
                 case '0':
@@ -669,13 +649,13 @@ void Vehicle::setVehicleComponents_interface()
         case '5':
             SetColor(14, 0);  cout << "Energy Store:" << endl; SetColor(15, 0);
             cout << "1:" << endl;
-            cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.energyStore_1_.expectedLifespan << endl;
-            cout << "  Track Time: " << seasonComponents_.powerUnitSet_.energyStore_1_.trackTime << endl;
-            cout << "  Wear: " << seasonComponents_.powerUnitSet_.energyStore_1_.wear << endl;
+            cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.energyStore1.GetExpectedLifespan() << endl;
+            cout << "  Track Time: " << seasonComponents.powerUnitSet.energyStore1.GetTrackTime() << endl;
+            cout << "  Wear: " << seasonComponents.powerUnitSet.energyStore1.GetWear() << endl;
             cout << "2:" << endl;
-            cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.energyStore_2_.expectedLifespan << endl;
-            cout << "  Track Time: " << seasonComponents_.powerUnitSet_.energyStore_2_.trackTime << endl;
-            cout << "  Wear: " << seasonComponents_.powerUnitSet_.energyStore_2_.wear << endl;
+            cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.energyStore2.GetExpectedLifespan() << endl;
+            cout << "  Track Time: " << seasonComponents.powerUnitSet.energyStore2.GetTrackTime() << endl;
+            cout << "  Wear: " << seasonComponents.powerUnitSet.energyStore2.GetWear() << endl;
 
             cout << "\nPick Energy Store you want to fit or press 3 to take off the fitted component (0 - return)...";
 
@@ -690,18 +670,18 @@ void Vehicle::setVehicleComponents_interface()
                 switch (decision) {
                 case '1':
                     cout << "\n\nFirst Energy Store has been fitted.";
-                    seasonComponents_.powerUnitSet_.chosenComponentsPowerUnit_.energyStore_ = InstalledComponent::COMPONENT_1;
+                    seasonComponents.powerUnitSet.chosenComponentsPowerUnit.energyStore = InstalledComponent::COMPONENT_1;
                     Sleep(1500);
                     break;
                 case '2':
                     cout << "\n\nSecond Energy Store has been fitted.";
-                    seasonComponents_.powerUnitSet_.chosenComponentsPowerUnit_.energyStore_ = InstalledComponent::COMPONENT_2;
+                    seasonComponents.powerUnitSet.chosenComponentsPowerUnit.energyStore = InstalledComponent::COMPONENT_2;
                     Sleep(1500);
                     break;
                     break;
                 case '3':
                     cout << "\n\nComponent has been taken off.";
-                    seasonComponents_.powerUnitSet_.chosenComponentsPowerUnit_.energyStore_ = InstalledComponent::NOT_FITTED;
+                    seasonComponents.powerUnitSet.chosenComponentsPowerUnit.energyStore = InstalledComponent::NOT_FITTED;
                     Sleep(1500);
                     break;
                 case '0':
@@ -711,13 +691,13 @@ void Vehicle::setVehicleComponents_interface()
         case '6':
             SetColor(14, 0);  cout << "Control Electronics:" << endl; SetColor(15, 0);
             cout << "1:" << endl;
-            cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.controlElectronics_1_.expectedLifespan << endl;
-            cout << "  Track Time: " << seasonComponents_.powerUnitSet_.controlElectronics_1_.trackTime << endl;
-            cout << "  Wear: " << seasonComponents_.powerUnitSet_.controlElectronics_1_.wear << endl;
+            cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.controlElectronics1.GetExpectedLifespan() << endl;
+            cout << "  Track Time: " << seasonComponents.powerUnitSet.controlElectronics1.GetTrackTime() << endl;
+            cout << "  Wear: " << seasonComponents.powerUnitSet.controlElectronics1.GetWear() << endl;
             cout << "2:" << endl;
-            cout << "  Expected Lifespan: " << seasonComponents_.powerUnitSet_.controlElectronics_2_.expectedLifespan << endl;
-            cout << "  Track Time: " << seasonComponents_.powerUnitSet_.controlElectronics_2_.trackTime << endl;
-            cout << "  Wear: " << seasonComponents_.powerUnitSet_.controlElectronics_2_.wear << endl;
+            cout << "  Expected Lifespan: " << seasonComponents.powerUnitSet.controlElectronics2.GetExpectedLifespan() << endl;
+            cout << "  Track Time: " << seasonComponents.powerUnitSet.controlElectronics2.GetTrackTime() << endl;
+            cout << "  Wear: " << seasonComponents.powerUnitSet.controlElectronics2.GetWear() << endl;
 
             cout << "\nPick Control Electronics you want to fit or press 3 to take off the fitted component (0 - return)...";
 
@@ -732,18 +712,18 @@ void Vehicle::setVehicleComponents_interface()
                 switch (decision) {
                 case '1':
                     cout << "\n\nFirst Control Electronics Store has been fitted.";
-                    seasonComponents_.powerUnitSet_.chosenComponentsPowerUnit_.controlElectronics_ = InstalledComponent::COMPONENT_1;
+                    seasonComponents.powerUnitSet.chosenComponentsPowerUnit.controlElectronics = InstalledComponent::COMPONENT_1;
                     Sleep(1500);
                     break;
                 case '2':
                     cout << "\n\nSecond Control Electronics Store has been fitted.";
-                    seasonComponents_.powerUnitSet_.chosenComponentsPowerUnit_.controlElectronics_ = InstalledComponent::COMPONENT_2;
+                    seasonComponents.powerUnitSet.chosenComponentsPowerUnit.controlElectronics = InstalledComponent::COMPONENT_2;
                     Sleep(1500);
                     break;
                     break;
                 case '3':
                     cout << "\n\nComponent has been taken off.";
-                    seasonComponents_.powerUnitSet_.chosenComponentsPowerUnit_.controlElectronics_ = InstalledComponent::NOT_FITTED;
+                    seasonComponents.powerUnitSet.chosenComponentsPowerUnit.controlElectronics = InstalledComponent::NOT_FITTED;
                     Sleep(1500);
                     break;
                 case '0':
@@ -753,13 +733,13 @@ void Vehicle::setVehicleComponents_interface()
         case '7':
             SetColor(14, 0);  cout << "Practise Gearbox:" << endl; SetColor(15, 0);
             cout << "1:" << endl;
-            cout << "  Expected Lifespan: " << seasonComponents_.gearboxSet_.practiceGearbox_1_.expectedLifespan << endl;
-            cout << "  Track Time: " << seasonComponents_.gearboxSet_.practiceGearbox_1_.trackTime << endl;
-            cout << "  Wear: " << seasonComponents_.gearboxSet_.practiceGearbox_1_.wear << endl;
+            cout << "  Expected Lifespan: " << seasonComponents.gearboxSet.practiceGearbox1.GetExpectedLifespan() << endl;
+            cout << "  Track Time: " << seasonComponents.gearboxSet.practiceGearbox1.GetTrackTime() << endl;
+            cout << "  Wear: " << seasonComponents.gearboxSet.practiceGearbox1.GetWear() << endl;
             cout << "2:" << endl;
-            cout << "  Expected Lifespan: " << seasonComponents_.gearboxSet_.practiceGearbox_2_.expectedLifespan << endl;
-            cout << "  Track Time: " << seasonComponents_.gearboxSet_.practiceGearbox_2_.trackTime << endl;
-            cout << "  Wear: " << seasonComponents_.gearboxSet_.practiceGearbox_2_.wear << endl;
+            cout << "  Expected Lifespan: " << seasonComponents.gearboxSet.practiceGearbox2.GetExpectedLifespan() << endl;
+            cout << "  Track Time: " << seasonComponents.gearboxSet.practiceGearbox2.GetTrackTime() << endl;
+            cout << "  Wear: " << seasonComponents.gearboxSet.practiceGearbox2.GetWear() << endl;
 
             cout << "\nPick Practise Gearbox you want to fit or press 3 to take off the fitted component (0 - return)...";
 
@@ -774,18 +754,18 @@ void Vehicle::setVehicleComponents_interface()
                 switch (decision) {
                 case '1':
                     cout << "\n\nFirst Practise Gearbox has been fitted.";
-                    seasonComponents_.gearboxSet_.chosenComponentsGearbox_.practiceGearbox_ = InstalledComponent::COMPONENT_1;
+                    seasonComponents.gearboxSet.chosenComponentsGearbox.practiceGearbox = InstalledComponent::COMPONENT_1;
                     Sleep(1500);
                     break;
                 case '2':
                     cout << "\n\nSecond Practise Gearbox has been fitted.";
-                    seasonComponents_.gearboxSet_.chosenComponentsGearbox_.practiceGearbox_ = InstalledComponent::COMPONENT_2;
+                    seasonComponents.gearboxSet.chosenComponentsGearbox.practiceGearbox = InstalledComponent::COMPONENT_2;
                     Sleep(1500);
                     break;
                     break;
                 case '3':
                     cout << "\n\nComponent has been taken off.";
-                    seasonComponents_.gearboxSet_.chosenComponentsGearbox_.practiceGearbox_ = InstalledComponent::NOT_FITTED;
+                    seasonComponents.gearboxSet.chosenComponentsGearbox.practiceGearbox = InstalledComponent::NOT_FITTED;
                     Sleep(1500);
                     break;
                 case '0':
@@ -795,13 +775,13 @@ void Vehicle::setVehicleComponents_interface()
         case '8':
             SetColor(14, 0);  cout << "Event Gearbox:" << endl; SetColor(15, 0);
             cout << "1:" << endl;
-            cout << "  Expected Lifespan: " << seasonComponents_.gearboxSet_.eventGearbox_1_.expectedLifespan << endl;
-            cout << "  Track Time: " << seasonComponents_.gearboxSet_.eventGearbox_1_.trackTime << endl;
-            cout << "  Wear: " << seasonComponents_.gearboxSet_.eventGearbox_1_.wear << endl;
+            cout << "  Expected Lifespan: " << seasonComponents.gearboxSet.eventGearbox1.GetExpectedLifespan() << endl;
+            cout << "  Track Time: " << seasonComponents.gearboxSet.eventGearbox1.GetTrackTime() << endl;
+            cout << "  Wear: " << seasonComponents.gearboxSet.eventGearbox1.GetWear() << endl;
             cout << "2:" << endl;
-            cout << "  Expected Lifespan: " << seasonComponents_.gearboxSet_.eventGearbox_2_.expectedLifespan << endl;
-            cout << "  Track Time: " << seasonComponents_.gearboxSet_.eventGearbox_2_.trackTime << endl;
-            cout << "  Wear: " << seasonComponents_.gearboxSet_.eventGearbox_2_.wear << endl;
+            cout << "  Expected Lifespan: " << seasonComponents.gearboxSet.eventGearbox2.GetExpectedLifespan() << endl;
+            cout << "  Track Time: " << seasonComponents.gearboxSet.eventGearbox2.GetTrackTime() << endl;
+            cout << "  Wear: " << seasonComponents.gearboxSet.eventGearbox2.GetWear() << endl;
 
             cout << "\nPick Event Gearbox you want to fit or press 3 to take off the fitted component (0 - return)...";
 
@@ -816,18 +796,18 @@ void Vehicle::setVehicleComponents_interface()
                 switch (decision) {
                 case '1':
                     cout << "\n\nFirst Event Gearbox has been fitted.";
-                    seasonComponents_.gearboxSet_.chosenComponentsGearbox_.eventGearbox_ = InstalledComponent::COMPONENT_1;
+                    seasonComponents.gearboxSet.chosenComponentsGearbox.eventGearbox = InstalledComponent::COMPONENT_1;
                     Sleep(1500);
                     break;
                 case '2':
                     cout << "\n\nSecond Event Gearbox has been fitted.";
-                    seasonComponents_.gearboxSet_.chosenComponentsGearbox_.eventGearbox_ = InstalledComponent::COMPONENT_2;
+                    seasonComponents.gearboxSet.chosenComponentsGearbox.eventGearbox = InstalledComponent::COMPONENT_2;
                     Sleep(1500);
                     break;
                     break;
                 case '3':
                     cout << "\n\nComponent has been taken off.";
-                    seasonComponents_.gearboxSet_.chosenComponentsGearbox_.eventGearbox_ = InstalledComponent::NOT_FITTED;
+                    seasonComponents.gearboxSet.chosenComponentsGearbox.eventGearbox = InstalledComponent::NOT_FITTED;
                     Sleep(1500);
                     break;
                 case '0':
@@ -841,9 +821,14 @@ void Vehicle::setVehicleComponents_interface()
     } while (isCycled == true);
 }
 
-void Vehicle::setVehicleTotalComponentWearRatio(int aerodynamicsLevel, int powertrainLevel, int chassisLevel, int durabilityLevel)
+void Vehicle::SetDriver(Driver newDriver)
 {
-    double tempTotalWear = seasonComponents_.totalComponentWearRatio_;
+    driver = newDriver;
+}
+
+void Vehicle::SetTotalComponentWearRatio(int aerodynamicsLevel, int powertrainLevel, int chassisLevel, int durabilityLevel)
+{
+    double tempTotalWear = seasonComponents.totalComponentWearRatio;
 
     tempTotalWear = tempTotalWear * 10;
 
@@ -851,5 +836,5 @@ void Vehicle::setVehicleTotalComponentWearRatio(int aerodynamicsLevel, int power
 
     tempTotalWear = tempTotalWear / 10;
 
-    seasonComponents_.totalComponentWearRatio_ = tempTotalWear;
+    seasonComponents.totalComponentWearRatio = tempTotalWear;
 }

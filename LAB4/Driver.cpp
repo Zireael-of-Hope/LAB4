@@ -2,7 +2,7 @@
 
 Driver::Driver()
 {
-	name_ = "NoName";
+	name = "NoName";
 	number_ = 0;
 	overallRating_ = 0;
 	experience_ = 0;
@@ -16,66 +16,53 @@ Driver::~Driver()
 {
 }
 
-void Driver::setDriverName(string newName)
+void Driver::SetName(string newName)
 {
-	name_ = newName;
+	name = newName;
 }
 
-void Driver::setDriverNumber(int newNumber)
+void Driver::SetNumber(int newNumber)
 {
 	number_ = newNumber;
 }
 
-void Driver::setDriverOverallRating(int newOverallRating)
+void Driver::SetOverallRating(int newOverallRating)
 {
 	overallRating_ = newOverallRating;
 }
 
-void Driver::setDriverExperience(int newExperience)
+void Driver::SetExperience(int newExperience)
 {
 	experience_ = newExperience;
 }
 
-void Driver::setDriverRacecraft(int newRacecraft)
+void Driver::SetRacecraft(int newRacecraft)
 {
 	racecraft_ = newRacecraft;
 }
 
-void Driver::setDriverAwareness(int newAwareness)
+void Driver::SetAwareness(int newAwareness)
 {
 	awareness_ = newAwareness;
 }
 
-void Driver::setDriverPace(int newPace)
+void Driver::SetPace(int newPace)
 {
 	pace_ = newPace;
 }
 
-void Driver::setDriverSalary_interface(double sponsorSalary)
+void Driver::SetSalary(double newSalary)
 {
-	double decision;
-	bool isPass;
-
-	cout << "Enter the percentage of the sponsorship payment (current sponsor's payment: " << sponsorSalary << "): ";
-
-	do {
-		isPass = false;
-		cin >> decision;
-		cin.get();
-		if (decision >= 0 && decision <= 100)
-			isPass = true;
-	} while (isPass == false);
-
-	salary_ = sponsorSalary * (decision / 100);
+	salary_ = newSalary;
 }
 
-void Driver::getInfoDriver()
+void Driver::GetInfo()
 {
 	SetColor(14, 0);
 	cout << "Driver ";
 	SetColor(15, 0);
 
-	cout << name_ << " " << number_ << endl;
+	cout << name << " " << number_ << endl;
 	cout << "    " << "Overall rating: " << overallRating_ << endl;
 	cout << "    " << "Experience: " << experience_ << endl;
 	cout << "    " << "Racecraft: " << racecraft_ << endl;
@@ -86,7 +73,7 @@ void Driver::getInfoDriver()
 
 bool Driver::isDriverHired()
 {
-	if (name_ == "NoName")
+	if (name == "NoName")
 		return false;
 	else
 		return true;
@@ -94,5 +81,5 @@ bool Driver::isDriverHired()
 
 string Driver::returnDriverName()
 {
-	return name_;
+	return name;
 }
