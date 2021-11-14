@@ -7,29 +7,24 @@
 
 using namespace std;
 
-class Facility {
-private:
+struct Facility {
 	Bureau aerodynamics;
 	Bureau powertrain;
 	Bureau chassis;
 	Bureau durability;
-
-public:
-	Facility();
-	~Facility();
-
-	void GetInfoBureauAerodynamics();
-	void GetInfoBureauPowertrain();
-	void GetInfoBureauChassis();
-	void GetInfoBureauDurability();
-	void SetFacilityBureausLevel_interface();
-
-	int ReturnAerodynamicsLevel();
-	int ReturnPowertrainLevel();
-	int ReturnChassisLevel();
-	int ReturnDurabilityLevel();
 };
 
+void initFacility(Facility& facility);
 
+void FacilityGetInfoAerodynamics(Facility& facility);
+void FacilityGetInfoPowertrain(Facility& facility);
+void FacilityGetInfoChassis(Facility& facility);
+void FacilityGetInfoDurability(Facility& facility);
+void FacilitySetBureausLevel_interface(Facility& facility);
+
+int FacilityReturnAerodynamicsLevel(Facility& facility);
+int FacilityReturnPowertrainLevel(Facility& facility);
+int FacilityReturnChassisLevel(Facility& facility);
+int FacilityReturnDurabilityLevel(Facility& facility);
 
 

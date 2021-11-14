@@ -12,19 +12,19 @@ enum class ComponentID {
 	Gearbox
 };
 
-class Component
+struct Component
 {
 	int expectedLifespan;
 	int trackTime;
 	int wear;
-
-public:
-	int GetExpectedLifespan();
-	int GetTrackTime();
-	int GetWear();
-	void SetExpectedLifespan(int newExpectedLifespan);
-	void SetTrackTime(int newTrackTime);
-	void SetWear(int wear);
-	void SetFreshComponent(ComponentID componentName);
 };
+
+void initComponent(Component& component, ComponentID componentName);
+
+int ComponentGetExpectedLifespan(Component& component);
+int ComponentGetTrackTime(Component& component);
+int ComponentGetWear(Component& component);
+void ComponentSetExpectedLifespan(Component& component, int newExpectedLifespan);
+void ComponentSetTrackTime(Component& component, int newTrackTime);
+void ComponentSetWear(Component& component, int wear);
 

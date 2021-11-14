@@ -1,63 +1,61 @@
 #include "Component.h"
 
-int Component::GetExpectedLifespan()
-{
-	return expectedLifespan;
-}
-
-int Component::GetTrackTime()
-{
-	return trackTime;
-}
-
-int Component::GetWear()
-{
-	return wear;
-}
-
-void Component::SetExpectedLifespan(int newExpectedLifespan)
-{
-	expectedLifespan = newExpectedLifespan;
-}
-
-void Component::SetTrackTime(int newTrackTime)
-{
-	trackTime = newTrackTime;
-}
-
-void Component::SetWear(int newWear)
-{
-	wear = newWear;
-}
-
-void Component::SetFreshComponent(ComponentID componentName)
+void initComponent(Component& component, ComponentID componentName)
 {
 	switch (componentName) {
 	case ComponentID::Engine:
-		expectedLifespan = 340;
+		component.expectedLifespan = 340;
 		break;
 	case ComponentID::MguKinetic:
-		expectedLifespan = 800;
+		component.expectedLifespan = 800;
 		break;
 	case ComponentID::MguHeat:
-		expectedLifespan = 700;
+		component.expectedLifespan = 700;
 		break;
 	case ComponentID::TurboCharger:
-		expectedLifespan = 500;
+		component.expectedLifespan = 500;
 		break;
 	case ComponentID::EnergyStore:
-		expectedLifespan = 900;
+		component.expectedLifespan = 900;
 		break;
 	case ComponentID::ControlElectronics:
-		expectedLifespan = 450;
+		component.expectedLifespan = 450;
 		break;
 	case ComponentID::Gearbox:
-		expectedLifespan = 380;
+		component.expectedLifespan = 380;
 		break;
 	}
 
-	trackTime = 0;
-	wear = 0;
+	component.trackTime = 0;
+	component.wear = 0;
 }
 
+int ComponentGetExpectedLifespan(Component& component)
+{
+	return component.expectedLifespan;
+}
 
+int ComponentGetTrackTime(Component& component)
+{
+	return component.trackTime;
+}
+
+int ComponentGetWear(Component& component)
+{
+	return component.wear;
+}
+
+void ComponentSetExpectedLifespan(Component& component, int newExpectedLifespan)
+{
+	component.expectedLifespan = newExpectedLifespan;
+}
+
+void ComponentSetTrackTime(Component& component, int newTrackTime)
+{
+	component.trackTime = newTrackTime;
+}
+
+void ComponentSetWear(Component& component, int newWear)
+{
+	component.wear = newWear;
+}

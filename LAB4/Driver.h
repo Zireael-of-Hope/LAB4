@@ -6,9 +6,8 @@
 
 using namespace std;
 
-class Driver
+struct Driver
 {
-private:
 	string name = "NoName";
 	int number_ = 0;
 
@@ -17,24 +16,20 @@ private:
 	int racecraft_ = 0;
 	int awareness_ = 0;
 	int pace_ = 0;
-
 	double salary_ = 0;
-
-public:
-	Driver();
-	~Driver();
-
-	void SetName(string newName);
-	void SetNumber(int newNumber);
-	void SetOverallRating(int newOverallRating);
-	void SetExperience(int newExperience);
-	void SetRacecraft(int newRacecraft);
-	void SetAwareness(int newAwareness);
-	void SetPace(int newPace);
-	void SetSalary(double newSalary);
-	void GetInfo();
-
-	bool isDriverHired();
-	string returnDriverName();
 };
 
+void initDriver(Driver& driver);
+
+void DriverSetName(Driver& driver, string newName);
+void DriverSetNumber(Driver& driver, int newNumber);
+void DriverSetOverallRating(Driver& driver, int newOverallRating);
+void DriverSetExperience(Driver& driver, int newExperience);
+void DriverSetRacecraft(Driver& driver, int newRacecraft);
+void DriverSetAwareness(Driver& driver, int newAwareness);
+void DriverSetPace(Driver& driver, int newPace);
+void DriverSetSalary(Driver& driver, double newSalary);
+void DriverGetInfo(Driver& driver);
+
+bool DriverIsDriverHired(Driver& driver);
+string DriverReturnDriverName(Driver& driver);

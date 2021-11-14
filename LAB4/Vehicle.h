@@ -23,17 +23,13 @@ enum class TyresCompound {
 	HARD
 };
 
-
-
-class Tyres {
-public:
+struct Tyres {
 	TyresCompound installedTyres;
 	int tyreWear;
 };
 
-class Vehicle
+struct Vehicle
 {
-private:
 	int sponsorStickerQuantity;
 
 	Driver driver;
@@ -91,30 +87,27 @@ private:
 			} chosenComponentsGearbox;
 		} gearboxSet;
 	} seasonComponents;
-
-public:
-	Vehicle();
-	~Vehicle();
-
-	void GetSponsorStickers();
-	void AddSponsorSticker(string newSponsorName);
-	bool DeleteSponsorSticker(string nameDelete);
-	void GetInfoTotalWear();
-	void GetInfo();
-	void GetInfoName();
-	void GetInfoTyreSet();
-	void GetInfoCombastionEngine();
-	void GetInfoVehicleMguKinetic();
-	void GetInfoMguHeat();
-	void GetInfoTurboCharger();
-	void GetInfoEnergyStore();
-	void GetInfoControlElectronics();
-	void GetInfoPractiseGerbox();
-	void GetInfoEventGerbox();
-	void SetName(string newName);
-	void SetTyres_interface();
-	void SetComponents_interface();
-	void SetDriver(Driver newDriver);
-	void SetTotalComponentWearRatio(int aerodynamicsLevel, int powertrainLevel, int chassisLevel, int durabilityLevel);
 };
 
+void initVehicle(Vehicle& vehicle);
+
+void VehicleGetSponsorStickers(Vehicle& vehicle);
+void VehicleAddSponsorSticker(Vehicle& vehicle, string newSponsorName);
+bool VehicleDeleteSponsorSticker(Vehicle& vehicle, string nameDelete);
+void VehicleGetInfoTotalWear(Vehicle& vehicle);
+void VehicleGetInfo(Vehicle& vehicle);
+void VehicleGetInfoName(Vehicle& vehicle);
+void VehicleGetInfoTyreSet(Vehicle& vehicle);
+void VehicleGetInfoCombastionEngine(Vehicle& vehicle);
+void VehicleGetInfoVehicleMguKinetic(Vehicle& vehicle);
+void VehicleGetInfoMguHeat(Vehicle& vehicle);
+void VehicleGetInfoTurboCharger(Vehicle& vehicle);
+void VehicleGetInfoEnergyStore(Vehicle& vehicle);
+void VehicleGetInfoControlElectronics(Vehicle& vehicle);
+void VehicleGetInfoPractiseGerbox(Vehicle& vehicle);
+void VehicleGetInfoEventGerbox(Vehicle& vehicle);
+void VehicleSetName(Vehicle& vehicle, string newName);
+void VehicleSetTyres_interface(Vehicle& vehicle);
+void VehicleSetComponents_interface(Vehicle& vehicle);
+void VehicleSetDriver(Vehicle& vehicle, Driver newDriver);
+void VehicleSetTotalComponentWearRatio(Vehicle& vehicle, int aerodynamicsLevel, int powertrainLevel, int chassisLevel, int durabilityLevel);

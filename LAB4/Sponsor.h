@@ -22,28 +22,23 @@ enum class SponsorTargetSeason {
 	NOT_LAST
 };
 
-class Sponsor
+struct Sponsor
 {
-private:
 	string name;
 	int color;
 	SponsorTargetRace targetRace;
 	SponsorTargetSeason targetSeason;
 	double paymentPerRace;
 	double targetBonusRatio;
-
-public:
-	Sponsor();
-	~Sponsor();
-
-	void SetName(string newName);
-	void SetColor_interface();
-	void SetTargetRace_interface();
-	void SetTargetSeason_interface();
-	void SetPaymentPerRace(double newPaymentPerRace);
-	void SetTargetBonusRatio(double newTargetBonusRatio);
-	void GetInfoSponsor();
-	double GetPaymentPerRace();
 };
 
+void initSponsor(Sponsor& sponsor);
 
+void SponsorSetName(Sponsor& sponsor, string newName);
+void SponsorSetColor_interface(Sponsor& sponsor);
+void SponsorSetTargetRace_interface(Sponsor& sponsor);
+void SponsorSetTargetSeason_interface(Sponsor& sponsor);
+void SponsorSetPaymentPerRace(Sponsor& sponsor, double newPaymentPerRace);
+void SponsorSetTargetBonusRatio(Sponsor& sponsor, double newTargetBonusRatio);
+void SponsorGetInfo(Sponsor& sponsor);
+double SponsorGetPaymentPerRace(Sponsor& sponsor);

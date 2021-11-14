@@ -2,22 +2,19 @@
 #include <iostream>
 #include <conio.h>
 
-class Bureau {
+struct Bureau {
 	int level;
 	float fabrication;
 	float buildTime;
 	float qualityControl;
 	float resourcePointGeneration;
-public:
-	Bureau();
-	~Bureau();
-
-	int GetLevel();
-	float GetFabrication();
-	float GetBuildTime();
-	float GetQualityControl();
-	float GetResourcePointGeneration();
-
-	void UpgradeBureau();
 };
 
+void initBureau(Bureau& bureau);
+
+int BureauGetLevel(Bureau& bureau);
+float BureauGetFabrication(Bureau& bureau);
+float BureauGetBuildTime(Bureau& bureau);
+float BureauGetQualityControl(Bureau& bureau);
+float BureauGetResourcePointGeneration(Bureau& bureau);
+void BureauUpgrade(Bureau& bureau);

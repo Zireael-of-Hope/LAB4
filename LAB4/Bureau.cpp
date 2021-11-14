@@ -1,48 +1,44 @@
 #include "Bureau.h"
 
-Bureau::Bureau()
+void initBureau(Bureau& bureau)
 {
-    level = 1;
-    fabrication = 1;
-    buildTime = 1;
-    qualityControl = 0.2;
-    resourcePointGeneration = 1;
+    bureau.level = 1;
+    bureau.fabrication = 1;
+    bureau.buildTime = 1;
+    bureau.qualityControl = 0.2;
+    bureau.resourcePointGeneration = 1;
 }
 
-Bureau::~Bureau()
+int BureauGetLevel(Bureau& bureau)
 {
+    return  bureau.level;
 }
 
-int Bureau::GetLevel()
+float BureauGetFabrication(Bureau& bureau)
 {
-    return level;
+    return  bureau.fabrication;
 }
 
-float Bureau::GetFabrication()
+float BureauGetBuildTime(Bureau& bureau)
 {
-    return fabrication;
+    return  bureau.buildTime;
 }
 
-float Bureau::GetBuildTime()
+float BureauGetQualityControl(Bureau& bureau)
 {
-    return buildTime;
+    return  bureau.qualityControl;
 }
 
-float Bureau::GetQualityControl()
+float BureauGetResourcePointGeneration(Bureau& bureau)
 {
-    return qualityControl;
+    return  bureau.resourcePointGeneration;
 }
 
-float Bureau::GetResourcePointGeneration()
+void BureauUpgrade(Bureau& bureau)
 {
-    return resourcePointGeneration;
-}
-
-void Bureau::UpgradeBureau()
-{
-    level++;
-    fabrication = fabrication - 0.15;
-    buildTime = buildTime - 0.15;
-    qualityControl = qualityControl - 0.06;
-   resourcePointGeneration = resourcePointGeneration + 0.2;
+    bureau.level++;
+    bureau.fabrication = bureau.fabrication - 0.15;
+    bureau.buildTime = bureau.buildTime - 0.15;
+    bureau.qualityControl = bureau.qualityControl - 0.06;
+    bureau.resourcePointGeneration = bureau.resourcePointGeneration + 0.2;
 }

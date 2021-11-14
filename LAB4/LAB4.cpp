@@ -17,7 +17,7 @@ int main()
 		isPass = false;
 		decision = choosingTeam(team);
 		if (decision != 3) {
-			team[decision]->interactSlot();
+			MyF1TeamInteractSlot(*team[decision]);
 		}
 	} while (isPass == false);
 }
@@ -34,14 +34,14 @@ int choosingTeam(MyF1Team* team[])
 			SetColor(14, 0);
 			cout << "\nDrivers:" << endl;
 			SetColor(15, 0);
-			team[i]->firstDriver.GetInfo();
-			team[i]->secondDriver.GetInfo();
+			cout << "1) "; DriverGetInfo(team[i]->firstDriver);
+			cout << "2) "; DriverGetInfo(team[i]->secondDriver);
 
 			SetColor(14, 0);
 			cout << "\nVehicles:" << endl;
 			SetColor(15, 0);
-			cout << "1) "; team[i]->w11_1.GetInfoName();
-			cout << "2) "; team[i]->w11_2.GetInfoName();
+			cout << "1) "; VehicleGetInfoName(team[i]->w11_1);
+			cout << "2) "; VehicleGetInfoName(team[i]->w11_2);
 		}
 		else {
 			cout << "Empty Slot\n" << endl;
@@ -59,15 +59,24 @@ int choosingTeam(MyF1Team* team[])
 
 	switch (decision) {
 	case '1':
-		team[0] = new MyF1Team;
+		if (team[0] == nullptr) {
+			team[0] = new MyF1Team;
+			initMyF1Team(*team[0]);
+		}
 		return 0;
 		break;
 	case '2':
-		team[1] = new MyF1Team;
+		if (team[1] == nullptr) {
+			team[1] = new MyF1Team;
+			initMyF1Team(*team[1]);
+		}
 		return 1;
 		break;
 	case '3':
-		team[2] = new MyF1Team;
+		if (team[2] == nullptr) {
+			team[2] = new MyF1Team;
+			initMyF1Team(*team[2]);
+		}
 		return 2;
 		break;
 	case '4':
