@@ -9,14 +9,14 @@ using namespace std;
 struct Driver
 {
 	string name = "NoName";
-	int number_ = 0;
+	int number = 0;
 
-	int overallRating_ = 0;
-	int experience_ = 0;
-	int racecraft_ = 0;
-	int awareness_ = 0;
-	int pace_ = 0;
-	double salary_ = 0;
+	int overallRating = 0;
+	int experience = 0;
+	int racecraft = 0;
+	int awareness = 0;
+	int pace = 0;
+	double salary = 0;
 };
 
 void initDriver(Driver& driver);

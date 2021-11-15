@@ -3,13 +3,13 @@
 void initDriver(Driver& driver)
 {
 	driver.name = "NoName";
-	driver.number_ = 0;
-	driver.overallRating_ = 0;
-	driver.experience_ = 0;
-	driver.racecraft_ = 0;
-	driver.awareness_ = 0;
-	driver.pace_ = 0;
-	driver.salary_ = 0;
+	driver.number = 0;
+	driver.overallRating = 0;
+	driver.experience = 0;
+	driver.racecraft = 0;
+	driver.awareness = 0;
+	driver.pace = 0;
+	driver.salary = 0;
 }
 
 void DriverSetName(Driver& driver, string newName)
@@ -19,37 +19,37 @@ void DriverSetName(Driver& driver, string newName)
 
 void DriverSetNumber(Driver& driver, int newNumber)
 {
-	driver.number_ = newNumber;
+	driver.number = newNumber;
 }
 
 void DriverSetOverallRating(Driver& driver, int newOverallRating)
 {
-	driver.overallRating_ = newOverallRating;
+	driver.overallRating = newOverallRating;
 }
 
 void DriverSetExperience(Driver& driver, int newExperience)
 {
-	driver.experience_ = newExperience;
+	driver.experience = newExperience;
 }
 
 void DriverSetRacecraft(Driver& driver, int newRacecraft)
 {
-	driver.racecraft_ = newRacecraft;
+	driver.racecraft = newRacecraft;
 }
 
 void DriverSetAwareness(Driver& driver, int newAwareness)
 {
-	driver.awareness_ = newAwareness;
+	driver.awareness = newAwareness;
 }
 
 void DriverSetPace(Driver& driver, int newPace)
 {
-	driver.pace_ = newPace;
+	driver.pace = newPace;
 }
 
 void DriverSetSalary(Driver& driver, double newSalary)
 {
-	driver.salary_ = newSalary;
+	driver.salary = newSalary;
 }
 
 void DriverGetInfo(Driver& driver)
@@ -58,13 +58,13 @@ void DriverGetInfo(Driver& driver)
 	cout << "Driver ";
 	SetColor(15, 0);
 
-	cout << driver.name << " " << driver.number_ << endl;
-	cout << "    " << "Overall rating: " << driver.overallRating_ << endl;
-	cout << "    " << "Experience: " << driver.experience_ << endl;
-	cout << "    " << "Racecraft: " << driver.racecraft_ << endl;
-	cout << "    " << "Awareness: " << driver.awareness_ << endl;
-	cout << "    " << "Pace: " << driver.pace_ << endl;
-	cout << "    " << "Salary: " << driver.salary_ << endl;
+	cout << driver.name << " " << driver.number << endl;
+	cout << "    " << "Overall rating: " << driver.overallRating << endl;
+	cout << "    " << "Experience: " << driver.experience << endl;
+	cout << "    " << "Racecraft: " << driver.racecraft << endl;
+	cout << "    " << "Awareness: " << driver.awareness << endl;
+	cout << "    " << "Pace: " << driver.pace << endl;
+	cout << "    " << "Salary: " << driver.salary << endl;
 }
 
 bool DriverIsDriverHired(Driver& driver)
