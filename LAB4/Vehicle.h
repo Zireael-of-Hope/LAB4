@@ -6,27 +6,9 @@
 #include "Component.h"
 #include "Color.h"
 #include "Driver.h"
+#include "Tyres.h"
 
 using namespace std;
-
-enum class InstalledComponent {
-	NOT_FITTED,
-	COMPONENT_1,
-	COMPONENT_2,
-	COMPONENT_3
-};
-
-enum class TyresCompound {
-	NOT_INSTALLED,
-	SOFT,
-	MEDIUM,
-	HARD
-};
-
-struct Tyres {
-	TyresCompound installedTyres;
-	int tyreWear;
-};
 
 struct Vehicle
 {
@@ -65,14 +47,12 @@ struct Vehicle
 			Component controlElectronics1;
 			Component controlElectronics2;
 
-			struct ChosenComponentsPowerUnit {
-				InstalledComponent internalCombastionEngine;
-				InstalledComponent mguKinetic;
-				InstalledComponent mguHeat;
-				InstalledComponent energyStore;
-				InstalledComponent turboCharger;
-				InstalledComponent controlElectronics;
-			} chosenComponentsPowerUnit;
+			InstalledComponent internalCombastionEngine;
+			InstalledComponent mguKinetic;
+			InstalledComponent mguHeat;
+			InstalledComponent energyStore;
+			InstalledComponent turboCharger;
+			InstalledComponent controlElectronics;
 		} powerUnitSet;
 		struct Gearbox {
 			Component practiceGearbox1;
@@ -81,10 +61,8 @@ struct Vehicle
 			Component eventGearbox1;
 			Component eventGearbox2;
 
-			struct ChosenComponentsGearbox {
-				InstalledComponent practiceGearbox;
-				InstalledComponent eventGearbox;
-			} chosenComponentsGearbox;
+			InstalledComponent practiceGearbox;
+			InstalledComponent eventGearbox;
 		} gearboxSet;
 	} seasonComponents;
 };

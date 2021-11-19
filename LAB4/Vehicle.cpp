@@ -5,7 +5,7 @@ void initVehicle(Vehicle& vehicle)
     vehicle.sponsorStickerQuantity = 0;
     vehicle.vehicleName = "NoName";
     vehicle.sponsorStickers = nullptr;
-    vehicle.tyreSet = { TyresCompound::NOT_INSTALLED, 0 };
+    
     vehicle.seasonComponents.totalComponentWearRatio = 3;
     initComponent(vehicle.seasonComponents.powerUnitSet.engine1, ComponentID::Engine);
     initComponent(vehicle.seasonComponents.powerUnitSet.engine2, ComponentID::Engine);
@@ -28,8 +28,6 @@ void initVehicle(Vehicle& vehicle)
     initComponent(vehicle.seasonComponents.gearboxSet.eventGearbox1, ComponentID::Gearbox);
     initComponent(vehicle.seasonComponents.gearboxSet.eventGearbox2, ComponentID::Gearbox);
 
-    vehicle.seasonComponents.gearboxSet.chosenComponentsGearbox = { InstalledComponent::NOT_FITTED, InstalledComponent::NOT_FITTED };
-    vehicle.seasonComponents.powerUnitSet.chosenComponentsPowerUnit = { InstalledComponent::NOT_FITTED, InstalledComponent::NOT_FITTED, InstalledComponent::NOT_FITTED, InstalledComponent::NOT_FITTED, InstalledComponent::NOT_FITTED, InstalledComponent::NOT_FITTED };
 }
 
 void VehicleGetInfo(Vehicle& vehicle)
@@ -138,7 +136,7 @@ void VehicleGetInfoTyreSet(Vehicle& vehicle)
 void VehicleGetInfoCombastionEngine(Vehicle& vehicle)
 {
     cout << "Internal Combastion Engine: ";
-    switch (vehicle.seasonComponents.powerUnitSet.chosenComponentsPowerUnit.internalCombastionEngine) {
+    switch (vehicle.seasonComponents.powerUnitSet.internalCombastionEngine) {
     case InstalledComponent::NOT_FITTED:
         cout << "not fitted" << endl;
         break;
@@ -166,7 +164,7 @@ void VehicleGetInfoCombastionEngine(Vehicle& vehicle)
 void VehicleGetInfoVehicleMguKinetic(Vehicle& vehicle)
 {
     cout << "MGU Kinetic: ";
-    switch (vehicle.seasonComponents.powerUnitSet.chosenComponentsPowerUnit.mguKinetic) {
+    switch (vehicle.seasonComponents.powerUnitSet.mguKinetic) {
     case InstalledComponent::NOT_FITTED:
         cout << "not fitted" << endl;
         break;
@@ -194,7 +192,7 @@ void VehicleGetInfoVehicleMguKinetic(Vehicle& vehicle)
 void VehicleGetInfoMguHeat(Vehicle& vehicle)
 {
     cout << "MGU Heat: ";
-    switch (vehicle.seasonComponents.powerUnitSet.chosenComponentsPowerUnit.mguHeat) {
+    switch (vehicle.seasonComponents.powerUnitSet.mguHeat) {
     case InstalledComponent::NOT_FITTED:
         cout << "not fitted" << endl;
         break;
@@ -222,7 +220,7 @@ void VehicleGetInfoMguHeat(Vehicle& vehicle)
 void VehicleGetInfoTurboCharger(Vehicle& vehicle)
 {
     cout << "Turbo Charger: ";
-    switch (vehicle.seasonComponents.powerUnitSet.chosenComponentsPowerUnit.turboCharger) {
+    switch (vehicle.seasonComponents.powerUnitSet.turboCharger) {
     case InstalledComponent::NOT_FITTED:
         cout << "not fitted" << endl;
         break;
@@ -250,7 +248,7 @@ void VehicleGetInfoTurboCharger(Vehicle& vehicle)
 void VehicleGetInfoEnergyStore(Vehicle& vehicle)
 {
     cout << "Energy Store: ";
-    switch (vehicle.seasonComponents.powerUnitSet.chosenComponentsPowerUnit.energyStore) {
+    switch (vehicle.seasonComponents.powerUnitSet.energyStore) {
     case InstalledComponent::NOT_FITTED:
         cout << "not fitted" << endl;
         break;
@@ -272,7 +270,7 @@ void VehicleGetInfoEnergyStore(Vehicle& vehicle)
 void VehicleGetInfoControlElectronics(Vehicle& vehicle)
 {
     cout << "Control Electronics: ";
-    switch (vehicle.seasonComponents.powerUnitSet.chosenComponentsPowerUnit.controlElectronics) {
+    switch (vehicle.seasonComponents.powerUnitSet.controlElectronics) {
     case InstalledComponent::NOT_FITTED:
         cout << "not fitted" << endl;
         break;
@@ -294,7 +292,7 @@ void VehicleGetInfoControlElectronics(Vehicle& vehicle)
 void VehicleGetInfoPractiseGerbox(Vehicle& vehicle)
 {
     cout << "Practise Gearbox: ";
-    switch (vehicle.seasonComponents.gearboxSet.chosenComponentsGearbox.practiceGearbox) {
+    switch (vehicle.seasonComponents.gearboxSet.practiceGearbox) {
     case InstalledComponent::NOT_FITTED:
         cout << "not fitted" << endl;
         break;
@@ -316,7 +314,7 @@ void VehicleGetInfoPractiseGerbox(Vehicle& vehicle)
 void VehicleGetInfoEventGerbox(Vehicle& vehicle)
 {
     cout << "Event Gearbox: ";
-    switch (vehicle.seasonComponents.gearboxSet.chosenComponentsGearbox.eventGearbox) {
+    switch (vehicle.seasonComponents.gearboxSet.eventGearbox) {
     case InstalledComponent::NOT_FITTED:
         cout << "not fitted" << endl;
         break;
@@ -349,21 +347,21 @@ void VehicleSetTyres_interface(Vehicle& vehicle)
     cout << "Current Tyres: ";
     SetColor(15, 0);
 
-    switch (vehicle.tyreSet.installedTyres) {
+    switch (GetTyres(vehicle.tyreSet)) {
     case TyresCompound::NOT_INSTALLED:
         cout << " Tyres aren't installed" << endl;
         break;
     case TyresCompound::SOFT:
         SetColor(4, 0);  cout << "SOFT "; SetColor(15, 0); cout << "tyres are installed";
-        cout << " Tyre Wear: " << vehicle.tyreSet.tyreWear << endl;
+        cout << " Tyre Wear: " << GetTyreWear(vehicle.tyreSet) << endl;
         break;
     case TyresCompound::MEDIUM:
         SetColor(6, 0);  cout << "MEDIUM "; SetColor(15, 0); cout << "tyres are installed";
-        cout << " Tyre Wear: " << vehicle.tyreSet.tyreWear << endl;
+        cout << " Tyre Wear: " << GetTyreWear(vehicle.tyreSet) << endl;
         break;
     case TyresCompound::HARD:
         cout << "HARD tyres are installed";
-        cout << " Tyre Wear: " << vehicle.tyreSet.tyreWear << endl;
+        cout << " Tyre Wear: " << GetTyreWear(vehicle.tyreSet) << endl;
         break;
     }
 
@@ -386,16 +384,13 @@ void VehicleSetTyres_interface(Vehicle& vehicle)
 
     switch (decision) {
     case '1':
-        vehicle.tyreSet.installedTyres = TyresCompound::SOFT;
-        vehicle.tyreSet.tyreWear = 0;
+        SetTyres(vehicle.tyreSet, TyresCompound::SOFT);
         break;
     case '2':
-        vehicle.tyreSet.installedTyres = TyresCompound::MEDIUM;
-        vehicle.tyreSet.tyreWear = 0;
+        SetTyres(vehicle.tyreSet, TyresCompound::MEDIUM); 
         break;
     case '3':
-        vehicle.tyreSet.installedTyres = TyresCompound::HARD;
-        vehicle.tyreSet.tyreWear = 0;
+        SetTyres(vehicle.tyreSet, TyresCompound::HARD);
         break;
     case '0':
         break;
@@ -470,22 +465,22 @@ void VehicleSetComponents_interface(Vehicle& vehicle)
                 switch (decision) {
                 case '1':
                     cout << "\n\nFirst engine has been fitted.";
-                    vehicle.seasonComponents.powerUnitSet.chosenComponentsPowerUnit.internalCombastionEngine = InstalledComponent::COMPONENT_1;
+                    vehicle.seasonComponents.powerUnitSet.internalCombastionEngine = InstalledComponent::COMPONENT_1;
                     Sleep(1500);
                     break;
                 case '2':
                     cout << "\n\nSecond engine has been fitted.";
-                    vehicle.seasonComponents.powerUnitSet.chosenComponentsPowerUnit.internalCombastionEngine = InstalledComponent::COMPONENT_2;
+                    vehicle.seasonComponents.powerUnitSet.internalCombastionEngine = InstalledComponent::COMPONENT_2;
                     Sleep(1500);
                     break;
                 case '3':
                     cout << "\n\nThird engine has been fitted.";
-                    vehicle.seasonComponents.powerUnitSet.chosenComponentsPowerUnit.internalCombastionEngine = InstalledComponent::COMPONENT_3;
+                    vehicle.seasonComponents.powerUnitSet.internalCombastionEngine = InstalledComponent::COMPONENT_3;
                     Sleep(1500);
                     break;
                 case '4':
                     cout << "\n\nComponent has been taken off.";
-                    vehicle.seasonComponents.powerUnitSet.chosenComponentsPowerUnit.internalCombastionEngine = InstalledComponent::NOT_FITTED;
+                    vehicle.seasonComponents.powerUnitSet.internalCombastionEngine = InstalledComponent::NOT_FITTED;
                     Sleep(1500);
                     break;
                 case '0':
@@ -520,22 +515,22 @@ void VehicleSetComponents_interface(Vehicle& vehicle)
                 switch (decision) {
                 case '1':
                     cout << "\n\nFirst MGU Kinetic has been fitted.";
-                    vehicle.seasonComponents.powerUnitSet.chosenComponentsPowerUnit.mguKinetic = InstalledComponent::COMPONENT_1;
+                    vehicle.seasonComponents.powerUnitSet.mguKinetic = InstalledComponent::COMPONENT_1;
                     Sleep(1500);
                     break;
                 case '2':
                     cout << "\n\nSecond MGU Kinetic has been fitted.";
-                    vehicle.seasonComponents.powerUnitSet.chosenComponentsPowerUnit.mguKinetic = InstalledComponent::COMPONENT_2;
+                    vehicle.seasonComponents.powerUnitSet.mguKinetic = InstalledComponent::COMPONENT_2;
                     Sleep(1500);
                     break;
                 case '3':
                     cout << "\n\nThird MGU Kinetic has been fitted.";
-                    vehicle.seasonComponents.powerUnitSet.chosenComponentsPowerUnit.mguKinetic = InstalledComponent::COMPONENT_3;
+                    vehicle.seasonComponents.powerUnitSet.mguKinetic = InstalledComponent::COMPONENT_3;
                     Sleep(1500);
                     break;
                 case '4':
                     cout << "\n\nComponent has been taken off.";
-                    vehicle.seasonComponents.powerUnitSet.chosenComponentsPowerUnit.mguKinetic = InstalledComponent::NOT_FITTED;
+                    vehicle.seasonComponents.powerUnitSet.mguKinetic = InstalledComponent::NOT_FITTED;
                     Sleep(1500);
                     break;
                 case '0':
@@ -570,22 +565,22 @@ void VehicleSetComponents_interface(Vehicle& vehicle)
                 switch (decision) {
                 case '1':
                     cout << "\n\nFirst MGU Heat has been fitted.";
-                    vehicle.seasonComponents.powerUnitSet.chosenComponentsPowerUnit.mguHeat = InstalledComponent::COMPONENT_1;
+                    vehicle.seasonComponents.powerUnitSet.mguHeat = InstalledComponent::COMPONENT_1;
                     Sleep(1500);
                     break;
                 case '2':
                     cout << "\n\nSecond MGU Heat has been fitted.";
-                    vehicle.seasonComponents.powerUnitSet.chosenComponentsPowerUnit.mguHeat = InstalledComponent::COMPONENT_2;
+                    vehicle.seasonComponents.powerUnitSet.mguHeat = InstalledComponent::COMPONENT_2;
                     Sleep(1500);
                     break;
                 case '3':
                     cout << "\n\nThird MGU Heat has been fitted.";
-                    vehicle.seasonComponents.powerUnitSet.chosenComponentsPowerUnit.mguHeat = InstalledComponent::COMPONENT_3;
+                    vehicle.seasonComponents.powerUnitSet.mguHeat = InstalledComponent::COMPONENT_3;
                     Sleep(1500);
                     break;
                 case '4':
                     cout << "\n\nComponent has been taken off.";
-                    vehicle.seasonComponents.powerUnitSet.chosenComponentsPowerUnit.mguHeat = InstalledComponent::NOT_FITTED;
+                    vehicle.seasonComponents.powerUnitSet.mguHeat = InstalledComponent::NOT_FITTED;
                     Sleep(1500);
                     break;
                 case '0':
@@ -620,22 +615,22 @@ void VehicleSetComponents_interface(Vehicle& vehicle)
                 switch (decision) {
                 case '1':
                     cout << "\n\nFirst Turbo Charger has been fitted.";
-                    vehicle.seasonComponents.powerUnitSet.chosenComponentsPowerUnit.turboCharger = InstalledComponent::COMPONENT_1;
+                    vehicle.seasonComponents.powerUnitSet.turboCharger = InstalledComponent::COMPONENT_1;
                     Sleep(1500);
                     break;
                 case '2':
                     cout << "\n\nSecond Turbo Charger has been fitted.";
-                    vehicle.seasonComponents.powerUnitSet.chosenComponentsPowerUnit.turboCharger = InstalledComponent::COMPONENT_2;
+                    vehicle.seasonComponents.powerUnitSet.turboCharger = InstalledComponent::COMPONENT_2;
                     Sleep(1500);
                     break;
                 case '3':
                     cout << "\n\nThird Turbo Charger has been fitted.";
-                    vehicle.seasonComponents.powerUnitSet.chosenComponentsPowerUnit.turboCharger = InstalledComponent::COMPONENT_3;
+                    vehicle.seasonComponents.powerUnitSet.turboCharger = InstalledComponent::COMPONENT_3;
                     Sleep(1500);
                     break;
                 case '4':
                     cout << "\n\nComponent has been taken off.";
-                    vehicle.seasonComponents.powerUnitSet.chosenComponentsPowerUnit.turboCharger = InstalledComponent::NOT_FITTED;
+                    vehicle.seasonComponents.powerUnitSet.turboCharger = InstalledComponent::NOT_FITTED;
                     Sleep(1500);
                     break;
                 case '0':
@@ -666,18 +661,18 @@ void VehicleSetComponents_interface(Vehicle& vehicle)
                 switch (decision) {
                 case '1':
                     cout << "\n\nFirst Energy Store has been fitted.";
-                    vehicle.seasonComponents.powerUnitSet.chosenComponentsPowerUnit.energyStore = InstalledComponent::COMPONENT_1;
+                    vehicle.seasonComponents.powerUnitSet.energyStore = InstalledComponent::COMPONENT_1;
                     Sleep(1500);
                     break;
                 case '2':
                     cout << "\n\nSecond Energy Store has been fitted.";
-                    vehicle.seasonComponents.powerUnitSet.chosenComponentsPowerUnit.energyStore = InstalledComponent::COMPONENT_2;
+                    vehicle.seasonComponents.powerUnitSet.energyStore = InstalledComponent::COMPONENT_2;
                     Sleep(1500);
                     break;
                     break;
                 case '3':
                     cout << "\n\nComponent has been taken off.";
-                    vehicle.seasonComponents.powerUnitSet.chosenComponentsPowerUnit.energyStore = InstalledComponent::NOT_FITTED;
+                    vehicle.seasonComponents.powerUnitSet.energyStore = InstalledComponent::NOT_FITTED;
                     Sleep(1500);
                     break;
                 case '0':
@@ -708,18 +703,18 @@ void VehicleSetComponents_interface(Vehicle& vehicle)
                 switch (decision) {
                 case '1':
                     cout << "\n\nFirst Control Electronics Store has been fitted.";
-                    vehicle.seasonComponents.powerUnitSet.chosenComponentsPowerUnit.controlElectronics = InstalledComponent::COMPONENT_1;
+                    vehicle.seasonComponents.powerUnitSet.controlElectronics = InstalledComponent::COMPONENT_1;
                     Sleep(1500);
                     break;
                 case '2':
                     cout << "\n\nSecond Control Electronics Store has been fitted.";
-                    vehicle.seasonComponents.powerUnitSet.chosenComponentsPowerUnit.controlElectronics = InstalledComponent::COMPONENT_2;
+                    vehicle.seasonComponents.powerUnitSet.controlElectronics = InstalledComponent::COMPONENT_2;
                     Sleep(1500);
                     break;
                     break;
                 case '3':
                     cout << "\n\nComponent has been taken off.";
-                    vehicle.seasonComponents.powerUnitSet.chosenComponentsPowerUnit.controlElectronics = InstalledComponent::NOT_FITTED;
+                    vehicle.seasonComponents.powerUnitSet.controlElectronics = InstalledComponent::NOT_FITTED;
                     Sleep(1500);
                     break;
                 case '0':
@@ -750,18 +745,18 @@ void VehicleSetComponents_interface(Vehicle& vehicle)
                 switch (decision) {
                 case '1':
                     cout << "\n\nFirst Practise Gearbox has been fitted.";
-                    vehicle.seasonComponents.gearboxSet.chosenComponentsGearbox.practiceGearbox = InstalledComponent::COMPONENT_1;
+                    vehicle.seasonComponents.gearboxSet.practiceGearbox = InstalledComponent::COMPONENT_1;
                     Sleep(1500);
                     break;
                 case '2':
                     cout << "\n\nSecond Practise Gearbox has been fitted.";
-                    vehicle.seasonComponents.gearboxSet.chosenComponentsGearbox.practiceGearbox = InstalledComponent::COMPONENT_2;
+                    vehicle.seasonComponents.gearboxSet.practiceGearbox = InstalledComponent::COMPONENT_2;
                     Sleep(1500);
                     break;
                     break;
                 case '3':
                     cout << "\n\nComponent has been taken off.";
-                    vehicle.seasonComponents.gearboxSet.chosenComponentsGearbox.practiceGearbox = InstalledComponent::NOT_FITTED;
+                    vehicle.seasonComponents.gearboxSet.practiceGearbox = InstalledComponent::NOT_FITTED;
                     Sleep(1500);
                     break;
                 case '0':
@@ -792,18 +787,18 @@ void VehicleSetComponents_interface(Vehicle& vehicle)
                 switch (decision) {
                 case '1':
                     cout << "\n\nFirst Event Gearbox has been fitted.";
-                    vehicle.seasonComponents.gearboxSet.chosenComponentsGearbox.eventGearbox = InstalledComponent::COMPONENT_1;
+                    vehicle.seasonComponents.gearboxSet.eventGearbox = InstalledComponent::COMPONENT_1;
                     Sleep(1500);
                     break;
                 case '2':
                     cout << "\n\nSecond Event Gearbox has been fitted.";
-                    vehicle.seasonComponents.gearboxSet.chosenComponentsGearbox.eventGearbox = InstalledComponent::COMPONENT_2;
+                    vehicle.seasonComponents.gearboxSet.eventGearbox = InstalledComponent::COMPONENT_2;
                     Sleep(1500);
                     break;
                     break;
                 case '3':
                     cout << "\n\nComponent has been taken off.";
-                    vehicle.seasonComponents.gearboxSet.chosenComponentsGearbox.eventGearbox = InstalledComponent::NOT_FITTED;
+                    vehicle.seasonComponents.gearboxSet.eventGearbox = InstalledComponent::NOT_FITTED;
                     Sleep(1500);
                     break;
                 case '0':

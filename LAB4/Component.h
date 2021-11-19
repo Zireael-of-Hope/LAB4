@@ -2,6 +2,13 @@
 #include <iostream>
 #include <conio.h>
 
+enum class InstalledComponent {
+	NOT_FITTED,
+	COMPONENT_1,
+	COMPONENT_2,
+	COMPONENT_3
+};
+
 enum class ComponentID {
 	Engine,
 	MguKinetic,

@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Driver">
+    <Position X="10.25" Y="8" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAEAogQRAAEABDIAAAAgAEgEABAABIQAAAAAA=</HashCode>
+      <FileName>Driver.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Facility">
+    <Position X="3.75" Y="1.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>gAAIAAAAAAAQAIAAAAQAJAEAAAAAAAAAGAYAAAACwAA=</HashCode>
+      <FileName>Facility.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sponsor">
+    <Position X="6.5" Y="7.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAEIAAAACAAoAgAAAEAAEAIAAIAEAACBAAAAUAAAgAA=</HashCode>
+      <FileName>Sponsor.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyF1Team">
+    <Position X="8" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ABAABAAAAAEACAAAAAATAAAAAEAIABAAAEQEAAAJKIA=</HashCode>
+      <FileName>Team.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tyres" Collapsed="true">
+    <Position X="21" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Vehicle.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vehicle">
+    <Position X="12" Y="0.5" Width="2.5" />
+    <NestedTypes>
+      <Struct Name="Vehicle::SeasonComponents" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Vehicle.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAEABEAFAAAAiAAOAAAgYACAJAAAAkEAACCARACAAAE=</HashCode>
+      <FileName>Vehicle.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bureau">
+    <Position X="1" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAACAAAABAgECAESAAEAACAAAAAA=</HashCode>
+      <FileName>Bureau.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Component">
+    <Position X="15.75" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAQAAABQAAAAAAAEQAAAAAAAAARAAAAEAAAA=</HashCode>
+      <FileName>Component.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="SponsorTargetRace" Collapsed="true">
+    <Position X="21" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAACAAIAA=</HashCode>
+      <FileName>Sponsor.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SponsorTargetSeason" Collapsed="true">
+    <Position X="21" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAIAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAg=</HashCode>
+      <FileName>Sponsor.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="InstalledComponent" Collapsed="true">
+    <Position X="21" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAEAAABAAABA=</HashCode>
+      <FileName>Vehicle.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="TyresCompound" Collapsed="true">
+    <Position X="21" Y="11.25" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAIAEAAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Vehicle.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ComponentID" Collapsed="true">
+    <Position X="21" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAEAAAAAAAAAAAAAACAAAAAAAABAAAABAAABAgAAAA=</HashCode>
+      <FileName>Component.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
