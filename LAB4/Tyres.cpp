@@ -1,6 +1,6 @@
 #include "Tyres.h"
 
-void InitTyres(Tyres& tyres)
+void initTyres(Tyres& tyres)
 {
     tyres.installedTyres = TyresCompound::NOT_INSTALLED;
 }

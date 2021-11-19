@@ -28,6 +28,14 @@ void initVehicle(Vehicle& vehicle)
     initComponent(vehicle.seasonComponents.gearboxSet.eventGearbox1, ComponentID::Gearbox);
     initComponent(vehicle.seasonComponents.gearboxSet.eventGearbox2, ComponentID::Gearbox);
 
+    vehicle.seasonComponents.powerUnitSet.internalCombastionEngine = InstalledComponent::NOT_FITTED;
+    vehicle.seasonComponents.powerUnitSet.mguKinetic = InstalledComponent::NOT_FITTED;
+    vehicle.seasonComponents.powerUnitSet.mguHeat = InstalledComponent::NOT_FITTED;
+    vehicle.seasonComponents.powerUnitSet.turboCharger = InstalledComponent::NOT_FITTED;
+    vehicle.seasonComponents.powerUnitSet.energyStore = InstalledComponent::NOT_FITTED;
+    vehicle.seasonComponents.powerUnitSet.controlElectronics = InstalledComponent::NOT_FITTED;
+    vehicle.seasonComponents.gearboxSet.eventGearbox = InstalledComponent::NOT_FITTED;
+    vehicle.seasonComponents.gearboxSet.practiceGearbox = InstalledComponent::NOT_FITTED;
 }
 
 void VehicleGetInfo(Vehicle& vehicle)

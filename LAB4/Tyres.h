@@ -13,7 +13,7 @@ struct Tyres
 	int tyreWear;
 };
 
-void InitTyres(Tyres& tyres);
+void initTyres(Tyres& tyres);
 int GetTyreWear(Tyres& tyres);
 void SetTyres(Tyres& tyres, TyresCompound newTyres);
 TyresCompound GetTyres(Tyres& tyres);
