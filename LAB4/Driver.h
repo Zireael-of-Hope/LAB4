@@ -17,7 +17,6 @@ private:
 	int racecraft = 0;
 	int awareness = 0;
 	int pace = 0;
-
 	double salary = 0;
 
 public:
@@ -33,8 +32,8 @@ public:
 	void SetPace(int newPace);
 	void SetSalary(double newSalary);
 	void GetInfo();
+	string GetName();
 
 	bool isDriverHired();
 	string returnDriverName();
 };
-

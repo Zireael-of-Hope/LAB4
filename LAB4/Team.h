@@ -21,18 +21,18 @@ public:
 
 	MyF1Team() {};
 	~MyF1Team() {};
-	void interactSlot();
+	void InteractSlot();
 
-	void getTeamInfo();
+	void GetTeamInfo();
 
-	void changeDriver();
-	void sub_changeDriver(int whichDriver, std::string& tempString, int& tempInt);
+	void ChangeDriver();
+	void SubChangeDriver(int whichDriver, std::string& tempString, int& tempInt, double& tempDouble);
 
-	void changeVehicle();
-	void sub_changeVehicle(int carNumber, bool& isPass, char& decision, std::string& tempString, bool& isCycled);
-	void sub_changeVehicle_stickers(bool& isCycled, int carNumber, bool& isPass, char& decision, std::string& tempString);
-	void sub_changeVehicle_driver(bool& isPass, char& decision, int carNumber, bool& isCycled);
+	void ChangeVehicle();
+	void SubChangeVehicle(int carNumber, bool& isPass, char& decision, std::string& tempString, bool& isCycled);
+	void SubChangeVehicle_stickers(bool& isCycled, int carNumber, bool& isPass, char& decision, std::string& tempString);
+	void SubChangeVehicle_driver(bool& isPass, char& decision, int carNumber, bool& isCycled);
 
-	void changeSponsor();
-	void sub_changeSposnor(int whichSponsor, std::string& tempString, double& tempDouble);
+	void ChangeSponsor();
+	void SubchangeSposnor(int whichSponsor, std::string& tempString, double& tempDouble);
 };

@@ -85,16 +85,16 @@ void Sponsor::SetTargetRace_interface()
     } while (isPass == false);
 
     switch (decision) {
-    case '1':
+    case 1:
         targetRace = SponsorTargetRace::PODIUM;
         break;
-    case '2':
+    case 2:
         targetRace = SponsorTargetRace::TOP_5;
         break;
-    case '3':
+    case 3:
         targetRace = SponsorTargetRace::TOP_10;
         break;
-    case '4':
+    case 4:
         targetRace = SponsorTargetRace::FINISH;
         break;
     }
@@ -121,19 +121,19 @@ void Sponsor::SetTargetSeason_interface()
     } while (isPass == false);
 
     switch (decision) {
-    case '1':
+    case 1:
         targetSeason = SponsorTargetSeason::CHAMP;
         break;
-    case '2':
+    case 2:
         targetSeason = SponsorTargetSeason::TOP_THREE;
         break;
-    case '3':
+    case 3:
         targetSeason = SponsorTargetSeason::TOP_FIVE;
         break;
-    case '4':
+    case 4:
         targetSeason = SponsorTargetSeason::EVERY_RACE_PARTICIPATE;
         break;
-    case '5':
+    case 5:
         targetSeason = SponsorTargetSeason::NOT_LAST;
         break;
     }

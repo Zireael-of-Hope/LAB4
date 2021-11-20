@@ -1,36 +1,6 @@
 #include "Component.h"
 
-int Component::GetExpectedLifespan()
-{
-	return expectedLifespan;
-}
-
-int Component::GetTrackTime()
-{
-	return trackTime;
-}
-
-int Component::GetWear()
-{
-	return wear;
-}
-
-void Component::SetExpectedLifespan(int newExpectedLifespan)
-{
-	expectedLifespan = newExpectedLifespan;
-}
-
-void Component::SetTrackTime(int newTrackTime)
-{
-	trackTime = newTrackTime;
-}
-
-void Component::SetWear(int newWear)
-{
-	wear = newWear;
-}
-
-void Component::SetFreshComponent(ComponentID componentName)
+Component::Component(ComponentID componentName)
 {
 	switch (componentName) {
 	case ComponentID::Engine:
@@ -60,4 +30,37 @@ void Component::SetFreshComponent(ComponentID componentName)
 	wear = 0;
 }
 
+Component::~Component()
+{
+}
+
+int Component::GetExpectedLifespan()
+{
+	return expectedLifespan;
+}
+
+int Component::GetTrackTime()
+{
+	return trackTime;
+}
+
+int Component::GetWear()
+{
+	return wear;
+}
+
+void Component::SetExpectedLifespan(int newExpectedLifespan)
+{
+	expectedLifespan = newExpectedLifespan;
+}
+
+void Component::SetTrackTime(int newTrackTime)
+{
+	trackTime = newTrackTime;
+}
+
+void Component::SetWear(int newWear)
+{
+	wear = newWear;
+}
 

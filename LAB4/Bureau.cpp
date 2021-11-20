@@ -44,5 +44,5 @@ void Bureau::UpgradeBureau()
     fabrication = fabrication - 0.15;
     buildTime = buildTime - 0.15;
     qualityControl = qualityControl - 0.06;
-   resourcePointGeneration = resourcePointGeneration + 0.2;
+    resourcePointGeneration = resourcePointGeneration + 0.2;
 }

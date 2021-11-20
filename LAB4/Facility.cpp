@@ -20,8 +20,8 @@ void Facility::GetInfoBureauAerodynamics()
 
 void Facility::GetInfoBureauPowertrain()
 {
-    cout << "Powertrain: " << endl; 
-        cout << "   Level: " << powertrain.GetLevel() << endl;
+    cout << "Powertrain: " << endl;
+    cout << "   Level: " << powertrain.GetLevel() << endl;
     cout << "   Fabrication: " << powertrain.GetFabrication() << endl;
     cout << "   Build Time: " << powertrain.GetBuildTime() << endl;
     cout << "   Quality Control: " << powertrain.GetQualityControl() << endl;
@@ -30,8 +30,8 @@ void Facility::GetInfoBureauPowertrain()
 
 void Facility::GetInfoBureauChassis()
 {
-    cout << "Chassis: " << endl; 
-        cout << "   Level: " << chassis.GetLevel() << endl;
+    cout << "Chassis: " << endl;
+    cout << "   Level: " << chassis.GetLevel() << endl;
     cout << "   Fabrication: " << chassis.GetFabrication() << endl;
     cout << "   Build Time: " << chassis.GetBuildTime() << endl;
     cout << "   Quality Control: " << chassis.GetQualityControl() << endl;
@@ -40,8 +40,8 @@ void Facility::GetInfoBureauChassis()
 
 void Facility::GetInfoBureauDurability()
 {
-    cout << "Durability: " << endl; 
-        cout << "   Level: " << durability.GetLevel() << endl;
+    cout << "Durability: " << endl;
+    cout << "   Level: " << durability.GetLevel() << endl;
     cout << "   Fabrication: " << durability.GetFabrication() << endl;
     cout << "   Build Time: " << durability.GetBuildTime() << endl;
     cout << "   Quality Control: " << durability.GetQualityControl() << endl;

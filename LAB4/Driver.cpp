@@ -68,7 +68,12 @@ void Driver::GetInfo()
 	cout << "    " << "Racecraft: " << racecraft << endl;
 	cout << "    " << "Awareness: " << awareness << endl;
 	cout << "    " << "Pace: " << pace << endl;
-	cout << "    " << "Salary: " << salary << "%" << endl;
+	cout << "    " << "Salary: " << salary << endl;
+}
+
+string Driver::GetName()
+{
+	return name;
 }
 
 bool Driver::isDriverHired()

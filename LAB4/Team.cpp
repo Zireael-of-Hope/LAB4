@@ -1,13 +1,13 @@
 #include "Team.h"
 
-void MyF1Team::interactSlot()
+void MyF1Team::InteractSlot()
 {
 	char decision;
 	bool isPass, isCycled;
 
 	do {
 		isCycled = true;
-		getTeamInfo();
+		GetTeamInfo();
 
 		cout << "1) Change Driver" << endl;
 		cout << "2) Change Vehicle" << endl;
@@ -24,15 +24,15 @@ void MyF1Team::interactSlot()
 
 		switch (decision) {
 		case '1':
-			changeDriver();
+			ChangeDriver();
 			isCycled = true;
 			break;
 		case '2':
-			changeVehicle();
+			ChangeVehicle();
 			isCycled = true;
 			break;
 		case '3':
-			changeSponsor();
+			ChangeSponsor();
 			break;
 		case '4':
 			facility.SetFacilityBureausLevel_interface();
@@ -43,7 +43,7 @@ void MyF1Team::interactSlot()
 		}
 	} while (isCycled == true);
 }
-void MyF1Team::getTeamInfo()
+void MyF1Team::GetTeamInfo()
 {
 	system("cls");
 
@@ -102,12 +102,13 @@ void MyF1Team::getTeamInfo()
 	facility.GetInfoBureauDurability();
 }
 
-void MyF1Team::changeDriver()
+void MyF1Team::ChangeDriver()
 {
 	char decision;
 	bool isPass, isCycled;
 	string tempString;
 	int tempInt;
+	double tempDouble;
 
 	do {
 		isCycled = true;
@@ -125,10 +126,10 @@ void MyF1Team::changeDriver()
 
 		switch (decision) {
 		case '1':
-			sub_changeDriver(1, tempString, tempInt);
+			SubChangeDriver(1, tempString, tempInt, tempDouble);
 			break;
 		case '2':
-			sub_changeDriver(2, tempString, tempInt);
+			SubChangeDriver(2, tempString, tempInt, tempDouble);
 			break;
 		case '3':
 			isCycled = false;
@@ -136,7 +137,7 @@ void MyF1Team::changeDriver()
 		}
 	} while (isCycled == true);
 }
-void MyF1Team::sub_changeDriver(int whichDriver, std::string& tempString, int& tempInt)
+void MyF1Team::SubChangeDriver(int whichDriver, std::string& tempString, int& tempInt, double& tempDouble)
 {
 	system("cls");
 
@@ -182,9 +183,9 @@ void MyF1Team::sub_changeDriver(int whichDriver, std::string& tempString, int& t
 	else secondDriver.SetPace(tempInt);
 
 	cout << "Enter Driver's salary: ";
-	cin >> tempInt;
+	cin >> tempDouble;
 	cin.get();
-	if (whichDriver == 1) firstDriver.SetSalary(tempInt);
+	if (whichDriver == 1) firstDriver.SetSalary(tempDouble);
 	else secondDriver.SetSalary(tempInt);
 
 	SetColor(14, 0);
@@ -193,7 +194,7 @@ void MyF1Team::sub_changeDriver(int whichDriver, std::string& tempString, int& t
 	Sleep(1500);
 }
 
-void MyF1Team::changeVehicle()
+void MyF1Team::ChangeVehicle()
 {
 	char decision;
 	bool isPass, isCycled;
@@ -216,11 +217,11 @@ void MyF1Team::changeVehicle()
 
 		switch (decision) {
 		case '1':
-			sub_changeVehicle(1, isPass, decision, tempString, isCycled);
+			SubChangeVehicle(1, isPass, decision, tempString, isCycled);
 			isCycled = true;
 			break;
 		case '2':
-			sub_changeVehicle(2, isPass, decision, tempString, isCycled);
+			SubChangeVehicle(2, isPass, decision, tempString, isCycled);
 			isCycled = true;
 			break;
 		case '3':
@@ -229,7 +230,7 @@ void MyF1Team::changeVehicle()
 		}
 	} while (isCycled == true);
 }
-void MyF1Team::sub_changeVehicle(int carNumber, bool& isPass, char& decision, std::string& tempString, bool& isCycled)
+void MyF1Team::SubChangeVehicle(int carNumber, bool& isPass, char& decision, std::string& tempString, bool& isCycled)
 {
 	do {
 		isCycled = true;
@@ -238,14 +239,15 @@ void MyF1Team::sub_changeVehicle(int carNumber, bool& isPass, char& decision, st
 		cout << "1) Change Vehicle name" << endl;
 		cout << "2) Change Vehicle driver" << endl;
 		cout << "3) Change Vehicle components" << endl;
-		cout << "4) Sticker Management" << endl;
-		cout << "5) Update Vehicle total component wear ratio due to facilities level" << endl;
-		cout << "6) Return\n" << endl;
+		cout << "4) Change Vehicle Tyres" << endl;
+		cout << "5) Sticker Management" << endl;
+		cout << "6) Update Vehicle total component wear ratio due to facilities level" << endl;
+		cout << "7) Return\n" << endl;
 
 		do {
 			isPass = false;
 			decision = _getch();
-			if (decision >= 49 && decision <= 54)
+			if (decision >= 49 && decision <= 55)
 				isPass = true;
 		} while (isPass == false);
 
@@ -265,7 +267,7 @@ void MyF1Team::sub_changeVehicle(int carNumber, bool& isPass, char& decision, st
 			Sleep(1500);
 			break;
 		case '2':
-			sub_changeVehicle_driver(isPass, decision, carNumber, isCycled);
+			SubChangeVehicle_driver(isPass, decision, carNumber, isCycled);
 			isCycled = true;
 			break;
 		case '3':
@@ -274,20 +276,24 @@ void MyF1Team::sub_changeVehicle(int carNumber, bool& isPass, char& decision, st
 			isCycled = true;
 			break;
 		case '4':
-			sub_changeVehicle_stickers(isCycled, carNumber, isPass, decision, tempString);
-			isCycled = true;
+			if (carNumber == 1) w11_1.SetTyres_interface();
+			else w11_2.SetTyres_interface();
 			break;
 		case '5':
+			SubChangeVehicle_stickers(isCycled, carNumber, isPass, decision, tempString);
+			isCycled = true;
+			break;
+		case '6':
 			if (carNumber == 1) w11_1.SetTotalComponentWearRatio(facility.ReturnAerodynamicsLevel(), facility.ReturnPowertrainLevel(), facility.ReturnChassisLevel(), facility.ReturnDurabilityLevel());
 			else w11_2.SetTotalComponentWearRatio(facility.ReturnAerodynamicsLevel(), facility.ReturnPowertrainLevel(), facility.ReturnChassisLevel(), facility.ReturnDurabilityLevel());
 			break;
-		case '6':
+		case '7':
 			isCycled = false;
 			break;
 		}
 	} while (isCycled == true);
 }
-void MyF1Team::sub_changeVehicle_stickers(bool& isCycled, int carNumber, bool& isPass, char& decision, std::string& tempString)
+void MyF1Team::SubChangeVehicle_stickers(bool& isCycled, int carNumber, bool& isPass, char& decision, std::string& tempString)
 {
 	do {
 		isCycled = true;
@@ -364,7 +370,7 @@ void MyF1Team::sub_changeVehicle_stickers(bool& isCycled, int carNumber, bool& i
 		}
 	} while (isCycled == true);
 }
-void MyF1Team::sub_changeVehicle_driver(bool& isPass, char& decision, int carNumber, bool& isCycled)
+void MyF1Team::SubChangeVehicle_driver(bool& isPass, char& decision, int carNumber, bool& isCycled)
 {
 	do {
 		system("cls");
@@ -387,7 +393,7 @@ void MyF1Team::sub_changeVehicle_driver(bool& isPass, char& decision, int carNum
 
 		switch (decision) {
 		case '1':
-			if (firstDriver.isDriverHired() == true) {
+			if (firstDriver.isDriverHired()) {
 				if (carNumber == 1)
 					w11_1.SetDriver(firstDriver);
 				else w11_2.SetDriver(firstDriver);
@@ -398,7 +404,7 @@ void MyF1Team::sub_changeVehicle_driver(bool& isPass, char& decision, int carNum
 			}
 			break;
 		case '2':
-			if (secondDriver.isDriverHired() == true) {
+			if (secondDriver.isDriverHired()) {
 				if (carNumber == 1)
 					w11_1.SetDriver(secondDriver);
 				else w11_2.SetDriver(secondDriver);
@@ -415,7 +421,7 @@ void MyF1Team::sub_changeVehicle_driver(bool& isPass, char& decision, int carNum
 	} while (isCycled == true);
 }
 
-void MyF1Team::changeSponsor()
+void MyF1Team::ChangeSponsor()
 {
 	char decision;
 	bool isPass, isCycled;
@@ -439,11 +445,11 @@ void MyF1Team::changeSponsor()
 
 		switch (decision) {
 		case '1':
-			sub_changeSposnor(1, tempString, tempDouble);
+			SubchangeSposnor(1, tempString, tempDouble);
 			isCycled = true;
 			break;
 		case '2':
-			sub_changeSposnor(2, tempString, tempDouble);
+			SubchangeSposnor(2, tempString, tempDouble);
 			break;
 		case '3':
 			isCycled = false;
@@ -451,7 +457,7 @@ void MyF1Team::changeSponsor()
 		}
 	} while (isCycled == true);
 }
-void MyF1Team::sub_changeSposnor(int whichSponsor, std::string& tempString, double& tempDouble)
+void MyF1Team::SubchangeSposnor(int whichSponsor, std::string& tempString, double& tempDouble)
 {
 	system("cls");
 
